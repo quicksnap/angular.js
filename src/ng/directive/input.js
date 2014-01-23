@@ -404,7 +404,28 @@ function validate(ctrl, validatorName, validity, value){
   return validity ? value : undefined;
 }
 
+
+function validateHtml5(ctrl, validatorName, element) {
+  var v = element.prop('validity');
+  if (v && isObject(v)) {
+    var validator = function(value) {
+      // Don't overwrite previous validation, don't consider valueMissing to apply (ng-required can
+      // perform the required validation)
+      if (!ctrl.$error[validatorName] && (v.badInput || v.customError || v.typeMismatch) &&
+          !v.valueMissing) {
+        ctrl.$setValidity(validatorName, false);
+        return undefined;
+      }
+      return value;
+    };
+    ctrl.$parsers.push(validator);
+    ctrl.$formatters.push(validator);
+  }
+}
+
 function textInputType(scope, element, attr, ctrl, $sniffer, $browser) {
+  var validity = element.prop('validity');
+  validity = isObject(validity) && validity;
   // In composition mode, users are still inputing intermediate text buffer,
   // hold the listener until composition is done.
   // More about composition events: https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent
@@ -431,7 +452,7 @@ function textInputType(scope, element, attr, ctrl, $sniffer, $browser) {
       value = trim(value);
     }
 
-    if (ctrl.$viewValue !== value) {
+    if (ctrl.$viewValue !== value || (validity && !value && !validity.valueMissing)) {
       if (scope.$$phase) {
         ctrl.$setViewValue(value);
       } else {
@@ -550,6 +571,8 @@ function numberInputType(scope, element, attr, ctrl, $sniffer, $browser) {
       return undefined;
     }
   });
+
+  validateHtml5(ctrl, 'number', element);
 
   ctrl.$formatters.push(function(value) {
     return ctrl.$isEmpty(value) ? '' : '' + value;
