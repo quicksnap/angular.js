@@ -1,0 +1,147 @@
+<a href='http://github.com/angular/angular.js/edit/master/src/ng/directive/ngInit.js' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+
+
+
+<a href='http://github.com/angular/angular.js/tree/master/src/ng/directive/ngInit.js#L3' class='view-source pull-right'>
+  <i class="icon-zoom-in">&nbsp;</i>View Source
+</a>
+
+
+<header class="api-profile-header">
+  <h1 class="api-profile-header-heading">ngInit</h1>
+  <ol class="api-profile-header-structure naked-list step-list">
+    
+    <li>
+      - directive in module <a href="api/ng">ng</a>
+    </li>
+  </ol>
+</header>
+
+
+
+<div class="api-profile-description">
+  <p>The <code>ngInit</code> directive allows you to evaluate an expression in the
+current scope.</p>
+<div class="alert alert-error">
+The only appropriate use of <code>ngInit</code> is for aliasing special properties of
+<a href="api/ng/directive/ngRepeat"><code>ngRepeat</code></a>, as seen in the demo below. Besides this case, you
+should use <a href="guide/controller">controllers</a> rather than <code>ngInit</code>
+to initialize values on a scope.
+</div>
+<div class="alert alert-warning">
+<strong>Note</strong>: If you have assignment in <code>ngInit</code> along with <a href="api/ng/service/$filter"><code>$filter</code></a>, make
+sure you have parenthesis for correct precedence:
+<pre class="prettyprint">
+  <div ng-init="test1 = (data | orderBy:'name')"></div>
+</pre>
+</div>
+</div>
+
+
+
+
+<div>
+  
+
+  
+  <h2>Directive Info</h2>
+  <ul>
+    
+    <li>This directive executes at priority level 450.</li>
+  </ul>
+
+  
+  <h2 id="usage">Usage</h2>
+  <div class="usage">
+  
+    <ul>
+    <li>as attribute:
+        <pre><code>&lt;ANY&#10;  ng-init=&quot;&quot;&gt;&#10;...&#10;&lt;/ANY&gt;</code></pre>
+      </li>
+    <li>as CSS class:
+        <pre><code>&lt;ANY class=&quot;ng-init: ;&quot;&gt; ... &lt;/ANY&gt;</code></pre>
+      </li>
+    
+  </div>
+  
+<section class="api-section">
+  <h3>Arguments</h3>
+
+<table class="variables-matrix input-arguments">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        ngInit
+        
+        
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-expression">expression</a>
+      </td>
+      <td>
+        <p><a href="guide/expression">Expression</a> to eval.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+</section>
+  
+
+
+  
+  <h2 id="example">Example</h2><div class="runnable-example" id="example-example39" outputFolder="examples/example-example39">
+<div class="runnable-example-file" name="index.html" language="html" type="html">
+
+
+
+<div>
+<pre><code class="lang-html">&lt;script&gt;
+  function Ctrl($scope) {
+    $scope.list = [[&#39;a&#39;, &#39;b&#39;], [&#39;c&#39;, &#39;d&#39;]];
+  }
+&lt;/script&gt;
+&lt;div ng-controller=&quot;Ctrl&quot;&gt;
+  &lt;div ng-repeat=&quot;innerList in list&quot; ng-init=&quot;outerIndex = $index&quot;&gt;
+    &lt;div ng-repeat=&quot;value in innerList&quot; ng-init=&quot;innerIndex = $index&quot;&gt;
+       &lt;span class=&quot;example-init&quot;&gt;list[ {{outerIndex}} ][ {{innerIndex}} ] = {{value}};&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+</div>
+
+<p></div></p>
+<div class="runnable-example-file" name="protractor.js" type="protractor" language="js">
+
+
+
+<div>
+<pre><code class="lang-js">  it(&#39;should alias index positions&#39;, function() {
+    var elements = element.all(by.css(&#39;.example-init&#39;));
+    expect(elements.get(0).getText()).toBe(&#39;list[ 0 ][ 0 ] = a;&#39;);
+    expect(elements.get(1).getText()).toBe(&#39;list[ 0 ][ 1 ] = b;&#39;);
+    expect(elements.get(2).getText()).toBe(&#39;list[ 1 ][ 0 ] = c;&#39;);
+    expect(elements.get(3).getText()).toBe(&#39;list[ 1 ][ 1 ] = d;&#39;);
+  });</code></pre>
+
+</div>
+
+<p></div></p>
+<p><iframe class="runnable-example-frame" src="examples/example-example39/index.html" name="example-example39"></iframe>
+</div></p>
+
+</div>
+
+

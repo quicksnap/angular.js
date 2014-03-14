@@ -1,0 +1,148 @@
+<a href='http://github.com/angular/angular.js/edit/master/src/ng/directive/ngClass.js' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+
+
+
+<a href='http://github.com/angular/angular.js/tree/master/src/ng/directive/ngClass.js#L211' class='view-source pull-right'>
+  <i class="icon-zoom-in">&nbsp;</i>View Source
+</a>
+
+
+<header class="api-profile-header">
+  <h1 class="api-profile-header-heading">ngClassOdd</h1>
+  <ol class="api-profile-header-structure naked-list step-list">
+    
+    <li>
+      - directive in module <a href="api/ng">ng</a>
+    </li>
+  </ol>
+</header>
+
+
+
+<div class="api-profile-description">
+  <p>The <code>ngClassOdd</code> and <code>ngClassEven</code> directives work exactly as
+<a href="api/ng/directive/ngClass">ngClass</a>, except they work in
+conjunction with <code>ngRepeat</code> and take effect only on odd (even) rows.</p>
+<p>This directive can be applied only within the scope of an
+<a href="api/ng/directive/ngRepeat">ngRepeat</a>.</p>
+
+</div>
+
+
+
+
+<div>
+  
+
+  
+  <h2>Directive Info</h2>
+  <ul>
+    
+    <li>This directive executes at priority level 0.</li>
+  </ul>
+
+  
+  <h2 id="usage">Usage</h2>
+  <div class="usage">
+  
+    <ul>
+    <li>as attribute:
+        <pre><code>&lt;ANY&#10;  ng-class-odd=&quot;&quot;&gt;&#10;...&#10;&lt;/ANY&gt;</code></pre>
+      </li>
+    <li>as CSS class:
+        <pre><code>&lt;ANY class=&quot;ng-class-odd: ;&quot;&gt; ... &lt;/ANY&gt;</code></pre>
+      </li>
+    
+  </div>
+  
+<section class="api-section">
+  <h3>Arguments</h3>
+
+<table class="variables-matrix input-arguments">
+  <thead>
+    <tr>
+      <th>Param</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>
+        ngClassOdd
+        
+        
+      </td>
+      <td>
+        <a href="" class="label type-hint type-hint-expression">expression</a>
+      </td>
+      <td>
+        <p><a href="guide/expression">Expression</a> to eval. The result
+  of the evaluation can be a string representing space delimited class names or an array.</p>
+
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+</section>
+  
+
+
+  
+  <h2 id="example">Example</h2><div class="runnable-example" id="example-example17" outputFolder="examples/example-example17">
+<div class="runnable-example-file" name="index.html" language="html" type="html">
+
+
+
+<div>
+<pre><code class="lang-html">   &lt;ol ng-init=&quot;names=[&#39;John&#39;, &#39;Mary&#39;, &#39;Cate&#39;, &#39;Suz&#39;]&quot;&gt;
+     &lt;li ng-repeat=&quot;name in names&quot;&gt;
+      &lt;span ng-class-odd=&quot;&#39;odd&#39;&quot; ng-class-even=&quot;&#39;even&#39;&quot;&gt;
+        {{name}}
+      &lt;/span&gt;
+     &lt;/li&gt;
+   &lt;/ol&gt;</code></pre>
+
+</div>
+
+<p></div></p>
+<div class="runnable-example-file" name="style.css" language="css" type="css">
+
+
+
+<div>
+<pre><code class="lang-css">  .odd {
+    color: red;
+  }
+  .even {
+    color: blue;
+  }</code></pre>
+
+</div>
+
+<p></div></p>
+<div class="runnable-example-file" name="protractor.js" type="protractor" language="js">
+
+
+
+<div>
+<pre><code class="lang-js">  it(&#39;should check ng-class-odd and ng-class-even&#39;, function() {
+    expect(element(by.repeater(&#39;name in names&#39;).row(0).column(&#39;name&#39;)).getAttribute(&#39;class&#39;)).
+      toMatch(/odd/);
+    expect(element(by.repeater(&#39;name in names&#39;).row(1).column(&#39;name&#39;)).getAttribute(&#39;class&#39;)).
+      toMatch(/even/);
+  });</code></pre>
+
+</div>
+
+<p></div></p>
+<p><iframe class="runnable-example-frame" src="examples/example-example17/index.html" name="example-example17"></iframe>
+</div></p>
+
+</div>
+
+
