@@ -1,9 +1,9 @@
-<a href='http://github.com/angular/angular.js/edit/master/src/ng/directive/input.js' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+<a href='http://github.com/angular/angular.js/edit/master/src/ng/directive/input.js' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this doc</a>
 
 
 
-<a href='http://github.com/angular/angular.js/tree/master/src/ng/directive/input.js#L323' class='view-source pull-right'>
-  <i class="icon-zoom-in">&nbsp;</i>View Source
+<a href='http://github.com/angular/angular.js/tree/master/src/ng/directive/input.js#L747' class='view-source pull-right btn btn-primary'>
+  <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
 
@@ -144,52 +144,34 @@
 
 
   
-  <h2 id="example">Example</h2><div class="runnable-example" name="radio-input-directive" id="example-radio-input-directive" outputFolder="examples/example-radio-input-directive">
-<div class="runnable-example-file" name="index.html" language="html" type="html">
+  <h2 id="example">Example</h2><p>
 
 
+<div class="runnable-example"
+    path="examples/example-radio-input-directive"
+    name="radio-input-directive">
 
-<div>
-<pre><code class="lang-html"> &lt;script&gt;
-   function Ctrl($scope) {
-     $scope.color = &#39;blue&#39;;
-     $scope.specialValue = {
-       &quot;id&quot;: &quot;12345&quot;,
-       &quot;value&quot;: &quot;green&quot;
-     };
-   }
- &lt;/script&gt;
- &lt;form name=&quot;myForm&quot; ng-controller=&quot;Ctrl&quot;&gt;
-   &lt;input type=&quot;radio&quot; ng-model=&quot;color&quot; value=&quot;red&quot;&gt;  Red &lt;br/&gt;
-   &lt;input type=&quot;radio&quot; ng-model=&quot;color&quot; ng-value=&quot;specialValue&quot;&gt; Green &lt;br/&gt;
-   &lt;input type=&quot;radio&quot; ng-model=&quot;color&quot; value=&quot;blue&quot;&gt; Blue &lt;br/&gt;
-   &lt;tt&gt;color = {{color | json}}&lt;/tt&gt;&lt;br/&gt;
-  &lt;/form&gt;
-  Note that <code>ng-value=&amp;quot;specialValue&amp;quot;</code> sets radio item&#39;s value to be the value of <code>$scope.specialValue</code>.</code></pre>
+ 
+  <div class="runnable-example-file" 
+    name="index.html"
+    language="html"
+    type="html">
+    <pre><code>&lt;script&gt;&#10;  function Ctrl($scope) {&#10;    $scope.color = &#39;blue&#39;;&#10;    $scope.specialValue = {&#10;      &quot;id&quot;: &quot;12345&quot;,&#10;      &quot;value&quot;: &quot;green&quot;&#10;    };&#10;  }&#10;&lt;/script&gt;&#10;&lt;form name=&quot;myForm&quot; ng-controller=&quot;Ctrl&quot;&gt;&#10;  &lt;input type=&quot;radio&quot; ng-model=&quot;color&quot; value=&quot;red&quot;&gt;  Red &lt;br/&gt;&#10;  &lt;input type=&quot;radio&quot; ng-model=&quot;color&quot; ng-value=&quot;specialValue&quot;&gt; Green &lt;br/&gt;&#10;  &lt;input type=&quot;radio&quot; ng-model=&quot;color&quot; value=&quot;blue&quot;&gt; Blue &lt;br/&gt;&#10;  &lt;tt&gt;color = {{color | json}}&lt;/tt&gt;&lt;br/&gt;&#10; &lt;/form&gt;&#10; Note that `ng-value=&quot;specialValue&quot;` sets radio item&#39;s value to be the value of `$scope.specialValue`.</code></pre>  
+  </div>
 
+  <div class="runnable-example-file" 
+    name="protractor.js"
+    type="protractor"
+    language="js">
+    <pre><code>it(&#39;should change state&#39;, function() {&#10;  var color = element(by.binding(&#39;color&#39;));&#10;&#10;  expect(color.getText()).toContain(&#39;blue&#39;);&#10;&#10;  element.all(by.model(&#39;color&#39;)).get(0).click();&#10;&#10;  expect(color.getText()).toContain(&#39;red&#39;);&#10;});</code></pre>  
+  </div>
+
+
+  <iframe class="runnable-example-frame" src="examples/example-radio-input-directive/index.html" name="example-radio-input-directive"></iframe>
 </div>
 
-<p></div></p>
-<div class="runnable-example-file" name="protractor.js" type="protractor" language="js">
 
-
-
-<div>
-<pre><code class="lang-js">  it(&#39;should change state&#39;, function() {
-    var color = element(by.binding(&#39;color&#39;));
-
-    expect(color.getText()).toContain(&#39;blue&#39;);
-
-    element.all(by.model(&#39;color&#39;)).get(0).click();
-
-    expect(color.getText()).toContain(&#39;red&#39;);
-  });</code></pre>
-
-</div>
-
-<p></div></p>
-<p><iframe class="runnable-example-frame" src="examples/example-radio-input-directive/index.html" name="example-radio-input-directive"></iframe>
-</div></p>
+</p>
 
 </div>
 

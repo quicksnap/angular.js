@@ -1,9 +1,9 @@
-<a href='http://github.com/angular/angular.js/edit/master/src/Angular.js' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+<a href='http://github.com/angular/angular.js/edit/master/src/Angular.js' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this doc</a>
 
 
 
-<a href='http://github.com/angular/angular.js/tree/master/src/Angular.js#L700' class='view-source pull-right'>
-  <i class="icon-zoom-in">&nbsp;</i>View Source
+<a href='http://github.com/angular/angular.js/tree/master/src/Angular.js#L700' class='view-source pull-right btn btn-primary'>
+  <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
 
@@ -115,48 +115,26 @@ are deleted and then all elements/properties from the source are copied to it.</
 
 
   
-  <h2 id="example">Example</h2><div class="runnable-example" id="example-example" outputFolder="examples/example-example">
-<div class="runnable-example-file" name="index.html" language="html" type="html">
+  <h2 id="example">Example</h2><p>
 
 
+<div class="runnable-example"
+    path="examples/example-example">
 
-<div>
-<pre><code class="lang-html">&lt;div ng-controller=&quot;Controller&quot;&gt;
-&lt;form novalidate class=&quot;simple-form&quot;&gt;
-Name: &lt;input type=&quot;text&quot; ng-model=&quot;user.name&quot; /&gt;&lt;br /&gt;
-E-mail: &lt;input type=&quot;email&quot; ng-model=&quot;user.email&quot; /&gt;&lt;br /&gt;
-Gender: &lt;input type=&quot;radio&quot; ng-model=&quot;user.gender&quot; value=&quot;male&quot; /&gt;male
-&lt;input type=&quot;radio&quot; ng-model=&quot;user.gender&quot; value=&quot;female&quot; /&gt;female&lt;br /&gt;
-&lt;button ng-click=&quot;reset()&quot;&gt;RESET&lt;/button&gt;
-&lt;button ng-click=&quot;update(user)&quot;&gt;SAVE&lt;/button&gt;
-&lt;/form&gt;
-&lt;pre&gt;form = {{user | json}}&lt;/pre&gt;
-&lt;pre&gt;master = {{master | json}}&lt;/pre&gt;
-&lt;/div&gt;
+ 
+  <div class="runnable-example-file" 
+    name="index.html"
+    language="html"
+    type="html">
+    <pre><code>&lt;div ng-controller=&quot;Controller&quot;&gt;&#10;&lt;form novalidate class=&quot;simple-form&quot;&gt;&#10;Name: &lt;input type=&quot;text&quot; ng-model=&quot;user.name&quot; /&gt;&lt;br /&gt;&#10;E-mail: &lt;input type=&quot;email&quot; ng-model=&quot;user.email&quot; /&gt;&lt;br /&gt;&#10;Gender: &lt;input type=&quot;radio&quot; ng-model=&quot;user.gender&quot; value=&quot;male&quot; /&gt;male&#10;&lt;input type=&quot;radio&quot; ng-model=&quot;user.gender&quot; value=&quot;female&quot; /&gt;female&lt;br /&gt;&#10;&lt;button ng-click=&quot;reset()&quot;&gt;RESET&lt;/button&gt;&#10;&lt;button ng-click=&quot;update(user)&quot;&gt;SAVE&lt;/button&gt;&#10;&lt;/form&gt;&#10;&lt;pre&gt;form = {{user | json}}&lt;/pre&gt;&#10;&lt;pre&gt;master = {{master | json}}&lt;/pre&gt;&#10;&lt;/div&gt;&#10;&#10;&lt;script&gt;&#10;function Controller($scope) {&#10;   $scope.master= {};&#10;&#10;   $scope.update = function(user) {&#10;     // Example with 1 argument&#10;     $scope.master= angular.copy(user);&#10;   };&#10;&#10;   $scope.reset = function() {&#10;     // Example with 2 arguments&#10;     angular.copy($scope.master, $scope.user);&#10;   };&#10;&#10;   $scope.reset();&#10; }&#10;&lt;/script&gt;</code></pre>  
+  </div>
 
-&lt;script&gt;
-function Controller($scope) {
-   $scope.master= {};
 
-   $scope.update = function(user) {
-     // Example with 1 argument
-     $scope.master= angular.copy(user);
-   };
-
-   $scope.reset = function() {
-     // Example with 2 arguments
-     angular.copy($scope.master, $scope.user);
-   };
-
-   $scope.reset();
- }
-&lt;/script&gt;</code></pre>
-
+  <iframe class="runnable-example-frame" src="examples/example-example/index.html" name="example-example"></iframe>
 </div>
 
-<p></div></p>
-<p><iframe class="runnable-example-frame" src="examples/example-example/index.html" name="example-example"></iframe>
-</div></p>
+
+</p>
 
 </div>
 

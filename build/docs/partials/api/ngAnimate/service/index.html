@@ -13,7 +13,10 @@
       
       <tr>
         <td><a href="api/ngAnimate/service/$animate">$animate</a></td>
-        <td><p>The <code>$animate</code> service provides animation detection support while performing DOM operations (enter, leave and move) as well as during addClass and removeClass operations.</p>
+        <td><p>The <code>$animate</code> service provides animation detection support while performing DOM operations (enter, leave and move) as well as during addClass and removeClass operations.
+When any of these operations are run, the $animate service
+will examine any JavaScript-defined animations (which are defined by using the $animateProvider provider object)
+as well as any CSS-defined animations against the CSS classes present on the element once the DOM operation is run.</p>
 </td>
       </tr>
       

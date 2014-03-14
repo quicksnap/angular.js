@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.2.15-build.local+sha.0609453
+ * @license AngularJS v1.3.0-local+sha.ada46e1
  * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -258,7 +258,7 @@ function shallowClearAndCopy(src, dst) {
 
    ```js
      var User = $resource('/user/:userId', {userId:'@id'});
-     var user = User.get({userId:123}, function() {
+     User.get({userId:123}, function(user) {
        user.abc = true;
        user.$save();
      });
@@ -277,6 +277,16 @@ function shallowClearAndCopy(src, dst) {
          //putResponseHeaders => $http header getter
        });
      });
+   ```
+ *
+ * You can also access the raw `$http` promise via the `$promise` property on the object returned
+ *
+   ```
+     var User = $resource('/user/:userId', {userId:'@id'});
+     User.get({userId:123})
+         .$promise.then(function(user) {
+           $scope.user = user;
+         });
    ```
 
  * # Creating a custom 'PUT' request
@@ -437,7 +447,7 @@ angular.module('ngResource', ['ng']).
         var ids = {};
         actionParams = extend({}, paramDefaults, actionParams);
         forEach(actionParams, function(value, key){
-          if (isFunction(value)) { value = value(data); }
+          if (isFunction(value)) { value = value(); }
           ids[key] = value && value.charAt && value.charAt(0) == '@' ?
             lookupDottedPath(data, value.substr(1)) : value;
         });

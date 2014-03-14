@@ -1,9 +1,9 @@
-<a href='http://github.com/angular/angular.js/edit/master/src/Angular.js' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+<a href='http://github.com/angular/angular.js/edit/master/src/Angular.js' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this doc</a>
 
 
 
-<a href='http://github.com/angular/angular.js/tree/master/src/Angular.js#L1136' class='view-source pull-right'>
-  <i class="icon-zoom-in">&nbsp;</i>View Source
+<a href='http://github.com/angular/angular.js/tree/master/src/Angular.js#L1136' class='view-source pull-right btn btn-primary'>
+  <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
 
@@ -35,34 +35,34 @@ contain the code. See <a href="api/ng/function/angular.module"><code>angular.mod
 document would not be compiled, the <code>AppController</code> would not be instantiated and the <code>{{ a+b }}</code>
 would not be resolved to <code>3</code>.</p>
 <p><code>ngApp</code> is the easiest, and most common, way to bootstrap an application.</p>
-<div class="runnable-example" module="ngAppDemo" id="example-example1" outputFolder="examples/example-example1">
-<div class="runnable-example-file" name="index.html" language="html" type="html">
+<p> 
 
 
+<div class="runnable-example"
+    path="examples/example-example1"
+    module="ngAppDemo">
 
-<div>
-<pre><code class="lang-html">&lt;div ng-controller=&quot;ngAppDemoController&quot;&gt;
-  I can add: {{a}} + {{b}} =  {{ a+b }}
-&lt;/div&gt;</code></pre>
+ 
+  <div class="runnable-example-file" 
+    name="index.html"
+    language="html"
+    type="html">
+    <pre><code>&lt;div ng-controller=&quot;ngAppDemoController&quot;&gt;&#10;I can add: {{a}} + {{b}} =  {{ a+b }}&#10;&lt;/div&gt;</code></pre>  
+  </div>
 
+  <div class="runnable-example-file" 
+    name="script.js"
+    language="js"
+    type="js">
+    <pre><code>angular.module(&#39;ngAppDemo&#39;, []).controller(&#39;ngAppDemoController&#39;, function($scope) {&#10;$scope.a = 1;&#10;$scope.b = 2;&#10;});</code></pre>  
+  </div>
+
+
+  <iframe class="runnable-example-frame" src="examples/example-example1/index.html" name="example-example1"></iframe>
 </div>
 
-<p></div></p>
-<div class="runnable-example-file" name="script.js" language="js" type="js">
 
-
-
-<div>
-<pre><code class="lang-js">angular.module(&#39;ngAppDemo&#39;, []).controller(&#39;ngAppDemoController&#39;, function($scope) {
-  $scope.a = 1;
-  $scope.b = 2;
-});</code></pre>
-
-</div>
-
-<p></div></p>
-<p><iframe class="runnable-example-frame" src="examples/example-example1/index.html" name="example-example1"></iframe>
-</div></p>
+</p>
 
 </div>
 

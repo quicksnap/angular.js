@@ -1,9 +1,9 @@
-<a href='http://github.com/angular/angular.js/edit/master/src/ng/directive/input.js' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+<a href='http://github.com/angular/angular.js/edit/master/src/ng/directive/input.js' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this doc</a>
 
 
 
-<a href='http://github.com/angular/angular.js/tree/master/src/ng/directive/input.js#L1213' class='view-source pull-right'>
-  <i class="icon-zoom-in">&nbsp;</i>View Source
+<a href='http://github.com/angular/angular.js/tree/master/src/ng/directive/input.js#L1739' class='view-source pull-right btn btn-primary'>
+  <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
 
@@ -48,6 +48,11 @@ implicitly and added to the scope.</p>
 <li><a href="api/ng/input/input[number]">number</a></li>
 <li><a href="api/ng/input/input[email]">email</a></li>
 <li><a href="api/ng/input/input[url]">url</a></li>
+<li><a href="api/ng/input/input[date]">date</a></li>
+<li><a href="api/ng/input/input[dateTimeLocal]">dateTimeLocal</a></li>
+<li><a href="api/ng/input/input[time]">time</a></li>
+<li><a href="api/ng/input/input[month]">month</a></li>
+<li><a href="api/ng/input/input[week]">week</a></li>
 </ul>
 </li>
 <li><a href="api/ng/directive/select">select</a></li>
@@ -113,39 +118,29 @@ that has been rendered as invalid after it has been validated:</p>
 
 
   
-  <h2 id="example">Example</h2><div class="runnable-example" deps="angular-animate.js" animations="true" fixBase="true" id="example-example11" outputFolder="examples/example-example11">
-<div class="runnable-example-file" name="index.html" language="html" type="html">
+  <h2 id="example">Example</h2><p>
 
 
+<div class="runnable-example"
+    path="examples/example-example11"
+    deps="angular-animate.js"
+    animations="true"
+    fixBase="true">
 
-<div>
-<pre><code class="lang-html">  &lt;script&gt;
-   function Ctrl($scope) {
-     $scope.val = &#39;1&#39;;
-   }
-  &lt;/script&gt;
-  &lt;style&gt;
-    .my-input {
-      -webkit-transition:all linear 0.5s;
-      transition:all linear 0.5s;
-      background: transparent;
-    }
-    .my-input.ng-invalid {
-      color:white;
-      background: red;
-    }
-  &lt;/style&gt;
-  Update input to see transitions when valid/invalid.
-  Integer is a valid value.
-  &lt;form name=&quot;testForm&quot; ng-controller=&quot;Ctrl&quot;&gt;
-    &lt;input ng-model=&quot;val&quot; ng-pattern=&quot;/^\d+$/&quot; name=&quot;anim&quot; class=&quot;my-input&quot; /&gt;
-  &lt;/form&gt;</code></pre>
+ 
+  <div class="runnable-example-file" 
+    name="index.html"
+    language="html"
+    type="html">
+    <pre><code>&lt;script&gt;&#10; function Ctrl($scope) {&#10;   $scope.val = &#39;1&#39;;&#10; }&#10;&lt;/script&gt;&#10;&lt;style&gt;&#10;  .my-input {&#10;    -webkit-transition:all linear 0.5s;&#10;    transition:all linear 0.5s;&#10;    background: transparent;&#10;  }&#10;  .my-input.ng-invalid {&#10;    color:white;&#10;    background: red;&#10;  }&#10;&lt;/style&gt;&#10;Update input to see transitions when valid/invalid.&#10;Integer is a valid value.&#10;&lt;form name=&quot;testForm&quot; ng-controller=&quot;Ctrl&quot;&gt;&#10;  &lt;input ng-model=&quot;val&quot; ng-pattern=&quot;/^\d+$/&quot; name=&quot;anim&quot; class=&quot;my-input&quot; /&gt;&#10;&lt;/form&gt;</code></pre>  
+  </div>
 
+
+  <iframe class="runnable-example-frame" src="examples/example-example11/index.html" name="example-example11"></iframe>
 </div>
 
-<p></div></p>
-<p><iframe class="runnable-example-frame" src="examples/example-example11/index.html" name="example-example11"></iframe>
-</div></p>
+
+</p>
 
 </div>
 

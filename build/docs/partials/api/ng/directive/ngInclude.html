@@ -1,9 +1,9 @@
-<a href='http://github.com/angular/angular.js/edit/master/src/ng/directive/ngInclude.js' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+<a href='http://github.com/angular/angular.js/edit/master/src/ng/directive/ngInclude.js' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this doc</a>
 
 
 
-<a href='http://github.com/angular/angular.js/tree/master/src/ng/directive/ngInclude.js#L3' class='view-source pull-right'>
-  <i class="icon-zoom-in">&nbsp;</i>View Source
+<a href='http://github.com/angular/angular.js/tree/master/src/ng/directive/ngInclude.js#L3' class='view-source pull-right btn btn-primary'>
+  <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
 
@@ -144,10 +144,8 @@ leave - animation is used to animate existing content away.</p>
   
 <h2>Events</h2>
 <ul class="events">
-  <li id="$includeContentRequested
-@eventOf ng.directive:ngInclude">
-    <h3>$includeContentRequested
-@eventOf ng.directive:ngInclude</h3>
+  <li id="$includeContentRequested">
+    <h3>$includeContentRequested</h3>
     <div><p>Emitted every time the ngInclude content is requested.</p>
 </div>
     <div class="inline">
@@ -160,10 +158,8 @@ leave - animation is used to animate existing content away.</p>
     </div>
     </li>
   
-  <li id="$includeContentLoaded
-@eventOf ng.directive:ngInclude">
-    <h3>$includeContentLoaded
-@eventOf ng.directive:ngInclude</h3>
+  <li id="$includeContentLoaded">
+    <h3>$includeContentLoaded</h3>
     <div><p>Emitted every time the ngInclude content is reloaded.</p>
 </div>
     <div class="inline">
@@ -180,146 +176,64 @@ leave - animation is used to animate existing content away.</p>
 
 
   
-  <h2 id="example">Example</h2><div class="runnable-example" module="ngAnimate" deps="angular-animate.js" animations="true" id="example-example38" outputFolder="examples/example-example38">
-<div class="runnable-example-file" name="index.html" language="html" type="html">
+  <h2 id="example">Example</h2><p>
 
 
+<div class="runnable-example"
+    path="examples/example-example38"
+    module="ngAnimate"
+    deps="angular-animate.js"
+    animations="true">
 
-<div>
-<pre><code class="lang-html"> &lt;div ng-controller=&quot;Ctrl&quot;&gt;
-   &lt;select ng-model=&quot;template&quot; ng-options=&quot;t.name for t in templates&quot;&gt;
-    &lt;option value=&quot;&quot;&gt;(blank)&lt;/option&gt;
-   &lt;/select&gt;
-   url of the template: &lt;tt&gt;{{template.url}}&lt;/tt&gt;
-   &lt;hr/&gt;
-   &lt;div class=&quot;slide-animate-container&quot;&gt;
-     &lt;div class=&quot;slide-animate&quot; ng-include=&quot;template.url&quot;&gt;&lt;/div&gt;
-   &lt;/div&gt;
- &lt;/div&gt;</code></pre>
+ 
+  <div class="runnable-example-file" 
+    name="index.html"
+    language="html"
+    type="html">
+    <pre><code>&lt;div ng-controller=&quot;Ctrl&quot;&gt;&#10;  &lt;select ng-model=&quot;template&quot; ng-options=&quot;t.name for t in templates&quot;&gt;&#10;   &lt;option value=&quot;&quot;&gt;(blank)&lt;/option&gt;&#10;  &lt;/select&gt;&#10;  url of the template: &lt;tt&gt;{{template.url}}&lt;/tt&gt;&#10;  &lt;hr/&gt;&#10;  &lt;div class=&quot;slide-animate-container&quot;&gt;&#10;    &lt;div class=&quot;slide-animate&quot; ng-include=&quot;template.url&quot;&gt;&lt;/div&gt;&#10;  &lt;/div&gt;&#10;&lt;/div&gt;</code></pre>  
+  </div>
 
+  <div class="runnable-example-file" 
+    name="script.js"
+    language="js"
+    type="js">
+    <pre><code>function Ctrl($scope) {&#10;  $scope.templates =&#10;    [ { name: &#39;template1.html&#39;, url: &#39;template1.html&#39;},&#10;      { name: &#39;template2.html&#39;, url: &#39;template2.html&#39;} ];&#10;  $scope.template = $scope.templates[0];&#10;}</code></pre>  
+  </div>
+
+  <div class="runnable-example-file" 
+    name="template1.html"
+    language="html"
+    type="html">
+    <pre><code>Content of template1.html</code></pre>  
+  </div>
+
+  <div class="runnable-example-file" 
+    name="template2.html"
+    language="html"
+    type="html">
+    <pre><code>Content of template2.html</code></pre>  
+  </div>
+
+  <div class="runnable-example-file" 
+    name="animations.css"
+    language="css"
+    type="css">
+    <pre><code>.slide-animate-container {&#10;  position:relative;&#10;  background:white;&#10;  border:1px solid black;&#10;  height:40px;&#10;  overflow:hidden;&#10;}&#10;&#10;.slide-animate {&#10;  padding:10px;&#10;}&#10;&#10;.slide-animate.ng-enter, .slide-animate.ng-leave {&#10;  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;&#10;  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;&#10;&#10;  position:absolute;&#10;  top:0;&#10;  left:0;&#10;  right:0;&#10;  bottom:0;&#10;  display:block;&#10;  padding:10px;&#10;}&#10;&#10;.slide-animate.ng-enter {&#10;  top:-50px;&#10;}&#10;.slide-animate.ng-enter.ng-enter-active {&#10;  top:0;&#10;}&#10;&#10;.slide-animate.ng-leave {&#10;  top:0;&#10;}&#10;.slide-animate.ng-leave.ng-leave-active {&#10;  top:50px;&#10;}</code></pre>  
+  </div>
+
+  <div class="runnable-example-file" 
+    name="protractor.js"
+    type="protractor"
+    language="js">
+    <pre><code>var templateSelect = element(by.model(&#39;template&#39;));&#10;var includeElem = element(by.css(&#39;[ng-include]&#39;));&#10;&#10;it(&#39;should load template1.html&#39;, function() {&#10;  expect(includeElem.getText()).toMatch(/Content of template1.html/);&#10;});&#10;&#10;it(&#39;should load template2.html&#39;, function() {&#10;  if (browser.params.browser == &#39;firefox&#39;) {&#10;    // Firefox can&#39;t handle using selects&#10;    // See https://github.com/angular/protractor/issues/480&#10;    return;&#10;  }&#10;  templateSelect.click();&#10;  templateSelect.element.all(by.css(&#39;option&#39;)).get(2).click();&#10;  expect(includeElem.getText()).toMatch(/Content of template2.html/);&#10;});&#10;&#10;it(&#39;should change to blank&#39;, function() {&#10;  if (browser.params.browser == &#39;firefox&#39;) {&#10;    // Firefox can&#39;t handle using selects&#10;    return;&#10;  }&#10;  templateSelect.click();&#10;  templateSelect.element.all(by.css(&#39;option&#39;)).get(0).click();&#10;  expect(includeElem.isPresent()).toBe(false);&#10;});</code></pre>  
+  </div>
+
+
+  <iframe class="runnable-example-frame" src="examples/example-example38/index.html" name="example-example38"></iframe>
 </div>
 
-<p></div></p>
-<div class="runnable-example-file" name="script.js" language="js" type="js">
 
-
-
-<div>
-<pre><code class="lang-js"> function Ctrl($scope) {
-   $scope.templates =
-     [ { name: &#39;template1.html&#39;, url: &#39;template1.html&#39;},
-       { name: &#39;template2.html&#39;, url: &#39;template2.html&#39;} ];
-   $scope.template = $scope.templates[0];
- }</code></pre>
-
-</div>
-
-<p></div></p>
-<div class="runnable-example-file" name="template1.html" language="html" type="html">
-
-
-
-<div>
-<pre><code class="lang-html">  Content of template1.html</code></pre>
-
-</div>
-
-<p></div></p>
-<div class="runnable-example-file" name="template2.html" language="html" type="html">
-
-
-
-<div>
-<pre><code class="lang-html">  Content of template2.html</code></pre>
-
-</div>
-
-<p></div></p>
-<div class="runnable-example-file" name="animations.css" language="css" type="css">
-
-
-
-<div>
-<pre><code class="lang-css">  .slide-animate-container {
-    position:relative;
-    background:white;
-    border:1px solid black;
-    height:40px;
-    overflow:hidden;
-  }
-
-  .slide-animate {
-    padding:10px;
-  }
-
-  .slide-animate.ng-enter, .slide-animate.ng-leave {
-    -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    display:block;
-    padding:10px;
-  }
-
-  .slide-animate.ng-enter {
-    top:-50px;
-  }
-  .slide-animate.ng-enter.ng-enter-active {
-    top:0;
-  }
-
-  .slide-animate.ng-leave {
-    top:0;
-  }
-  .slide-animate.ng-leave.ng-leave-active {
-    top:50px;
-  }</code></pre>
-
-</div>
-
-<p></div></p>
-<div class="runnable-example-file" name="protractor.js" type="protractor" language="js">
-
-
-
-<div>
-<pre><code class="lang-js">  var templateSelect = element(by.model(&#39;template&#39;));
-  var includeElem = element(by.css(&#39;[ng-include]&#39;));
-
-  it(&#39;should load template1.html&#39;, function() {
-    expect(includeElem.getText()).toMatch(/Content of template1.html/);
-  });
-
-  it(&#39;should load template2.html&#39;, function() {
-    if (browser.params.browser == &#39;firefox&#39;) {
-      // Firefox can&#39;t handle using selects
-      // See <a href="https://github.com/angular/protractor/issues/480">https://github.com/angular/protractor/issues/480</a>
-      return;
-    }
-    templateSelect.click();
-    templateSelect.element.all(by.css(&#39;option&#39;)).get(2).click();
-    expect(includeElem.getText()).toMatch(/Content of template2.html/);
-  });
-
-  it(&#39;should change to blank&#39;, function() {
-    if (browser.params.browser == &#39;firefox&#39;) {
-      // Firefox can&#39;t handle using selects
-      return;
-    }
-    templateSelect.click();
-    templateSelect.element.all(by.css(&#39;option&#39;)).get(0).click();
-    expect(includeElem.isPresent()).toBe(false);
-  });</code></pre>
-
-</div>
-
-<p></div></p>
-<p><iframe class="runnable-example-frame" src="examples/example-example38/index.html" name="example-example38"></iframe>
-</div></p>
+</p>
 
 </div>
 

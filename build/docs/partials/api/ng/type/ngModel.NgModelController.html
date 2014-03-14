@@ -1,9 +1,9 @@
-<a href='http://github.com/angular/angular.js/edit/master/src/ng/directive/input.js' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+<a href='http://github.com/angular/angular.js/edit/master/src/ng/directive/input.js' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this doc</a>
 
 
 
-<a href='http://github.com/angular/angular.js/tree/master/src/ng/directive/input.js#L873' class='view-source pull-right'>
-  <i class="icon-zoom-in">&nbsp;</i>View Source
+<a href='http://github.com/angular/angular.js/tree/master/src/ng/directive/input.js#L1399' class='view-source pull-right btn btn-primary'>
+  <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
 
@@ -31,111 +31,49 @@ data-binding. Notice how different directives (<code>contenteditable</code>, <co
 collaborate together to achieve the desired result.</p>
 <p>Note that <code>contenteditable</code> is an HTML5 attribute, which tells the browser to let the element
 contents be edited in place by the user.  This will not work on older browsers.</p>
-<div class="runnable-example" name="NgModelController" module="customControl" id="example-NgModelController" outputFolder="examples/example-NgModelController">
-<div class="runnable-example-file" name="style.css" language="css" type="css">
+<p>
 
 
+<div class="runnable-example"
+    path="examples/example-NgModelController"
+    name="NgModelController"
+    module="customControl">
 
-<div>
-<pre><code class="lang-css">  [contenteditable] {
-    border: 1px solid black;
-    background-color: white;
-    min-height: 20px;
-  }
+ 
+  <div class="runnable-example-file" 
+    name="style.css"
+    language="css"
+    type="css">
+    <pre><code>[contenteditable] {&#10;  border: 1px solid black;&#10;  background-color: white;&#10;  min-height: 20px;&#10;}&#10;&#10;.ng-invalid {&#10;  border: 1px solid red;&#10;}</code></pre>  
+  </div>
 
-  .ng-invalid {
-    border: 1px solid red;
-  }</code></pre>
+  <div class="runnable-example-file" 
+    name="script.js"
+    language="js"
+    type="js">
+    <pre><code>angular.module(&#39;customControl&#39;, []).&#10;  directive(&#39;contenteditable&#39;, function() {&#10;    return {&#10;      restrict: &#39;A&#39;, // only activate on element attribute&#10;      require: &#39;?ngModel&#39;, // get a hold of NgModelController&#10;      link: function(scope, element, attrs, ngModel) {&#10;        if(!ngModel) return; // do nothing if no ng-model&#10;&#10;        // Specify how UI should be updated&#10;        ngModel.$render = function() {&#10;          element.html(ngModel.$viewValue || &#39;&#39;);&#10;        };&#10;&#10;        // Listen for change events to enable binding&#10;        element.on(&#39;blur keyup change&#39;, function() {&#10;          scope.$apply(read);&#10;        });&#10;        read(); // initialize&#10;&#10;        // Write data to the model&#10;        function read() {&#10;          var html = element.html();&#10;          // When we clear the content editable the browser leaves a &lt;br&gt; behind&#10;          // If strip-br attribute is provided then we strip this out&#10;          if( attrs.stripBr &amp;&amp; html == &#39;&lt;br&gt;&#39; ) {&#10;            html = &#39;&#39;;&#10;          }&#10;          ngModel.$setViewValue(html);&#10;        }&#10;      }&#10;    };&#10;  });</code></pre>  
+  </div>
 
+  <div class="runnable-example-file" 
+    name="index.html"
+    language="html"
+    type="html">
+    <pre><code>&lt;form name=&quot;myForm&quot;&gt;&#10; &lt;div contenteditable&#10;      name=&quot;myWidget&quot; ng-model=&quot;userContent&quot;&#10;      strip-br=&quot;true&quot;&#10;      required&gt;Change me!&lt;/div&gt;&#10;  &lt;span ng-show=&quot;myForm.myWidget.$error.required&quot;&gt;Required!&lt;/span&gt;&#10; &lt;hr&gt;&#10; &lt;textarea ng-model=&quot;userContent&quot;&gt;&lt;/textarea&gt;&#10;&lt;/form&gt;</code></pre>  
+  </div>
+
+  <div class="runnable-example-file" 
+    name="protractor.js"
+    type="protractor"
+    language="js">
+    <pre><code>it(&#39;should data-bind and become invalid&#39;, function() {&#10;if (browser.params.browser == &#39;safari&#39; || browser.params.browser == &#39;firefox&#39;) {&#10;  // SafariDriver can&#39;t handle contenteditable&#10;  // and Firefox driver can&#39;t clear contenteditables very well&#10;  return;&#10;}&#10;var contentEditable = element(by.css(&#39;[contenteditable]&#39;));&#10;var content = &#39;Change me!&#39;;&#10;&#10;expect(contentEditable.getText()).toEqual(content);&#10;&#10;contentEditable.clear();&#10;contentEditable.sendKeys(protractor.Key.BACK_SPACE);&#10;expect(contentEditable.getText()).toEqual(&#39;&#39;);&#10;expect(contentEditable.getAttribute(&#39;class&#39;)).toMatch(/ng-invalid-required/);&#10;});</code></pre>  
+  </div>
+
+
+  <iframe class="runnable-example-frame" src="examples/example-NgModelController/index.html" name="example-NgModelController"></iframe>
 </div>
 
-<p></div></p>
-<div class="runnable-example-file" name="script.js" language="js" type="js">
 
-
-
-<div>
-<pre><code class="lang-js">  angular.module(&#39;customControl&#39;, []).
-    directive(&#39;contenteditable&#39;, function() {
-      return {
-        restrict: &#39;A&#39;, // only activate on element attribute
-        require: &#39;?ngModel&#39;, // get a hold of NgModelController
-        link: function(scope, element, attrs, ngModel) {
-          if(!ngModel) return; // do nothing if no ng-model
-
-          // Specify how UI should be updated
-          ngModel.$render = function() {
-            element.html(ngModel.$viewValue || &#39;&#39;);
-          };
-
-          // Listen for change events to enable binding
-          element.on(&#39;blur keyup change&#39;, function() {
-            scope.$apply(read);
-          });
-          read(); // initialize
-
-          // Write data to the model
-          function read() {
-            var html = element.html();
-            // When we clear the content editable the browser leaves a &lt;br&gt; behind
-            // If strip-br attribute is provided then we strip this out
-            if( attrs.stripBr &amp;&amp; html == &#39;&lt;br&gt;&#39; ) {
-              html = &#39;&#39;;
-            }
-            ngModel.$setViewValue(html);
-          }
-        }
-      };
-    });</code></pre>
-
-</div>
-
-<p></div></p>
-<div class="runnable-example-file" name="index.html" language="html" type="html">
-
-
-
-<div>
-<pre><code class="lang-html">  &lt;form name=&quot;myForm&quot;&gt;
-   &lt;div contenteditable
-        name=&quot;myWidget&quot; ng-model=&quot;userContent&quot;
-        strip-br=&quot;true&quot;
-        required&gt;Change me!&lt;/div&gt;
-    &lt;span ng-show=&quot;myForm.myWidget.$error.required&quot;&gt;Required!&lt;/span&gt;
-   &lt;hr&gt;
-   &lt;textarea ng-model=&quot;userContent&quot;&gt;&lt;/textarea&gt;
-  &lt;/form&gt;</code></pre>
-
-</div>
-
-<p></div></p>
-<div class="runnable-example-file" name="protractor.js" type="protractor" language="js">
-
-
-
-<div>
-<pre><code class="lang-js">it(&#39;should data-bind and become invalid&#39;, function() {
-  if (browser.params.browser == &#39;safari&#39; || browser.params.browser == &#39;firefox&#39;) {
-    // SafariDriver can&#39;t handle contenteditable
-    // and Firefox driver can&#39;t clear contenteditables very well
-    return;
-  }
-  var contentEditable = element(by.css(&#39;[contenteditable]&#39;));
-  var content = &#39;Change me!&#39;;
-
-  expect(contentEditable.getText()).toEqual(content);
-
-  contentEditable.clear();
-  contentEditable.sendKeys(protractor.Key.BACK_SPACE);
-  expect(contentEditable.getText()).toEqual(&#39;&#39;);
-  expect(contentEditable.getAttribute(&#39;class&#39;)).toMatch(/ng-invalid-required/);
-});</code></pre>
-
-</div>
-
-<p></div></p>
-<p><iframe class="runnable-example-frame" src="examples/example-NgModelController/index.html" name="example-NgModelController"></iframe>
-</div></p>
+</p>
 
 </div>
 
@@ -406,7 +344,7 @@ which includes any validators. The value that comes out of this <code>$parsers</
        through to the next. The last return value is used to populate the model.
        Used to sanitize / convert the value as well as validation. For validation,
        the parsers should update the validity state using
-       <a href="api/ng/type/ngModel.NgModelController#$setValidity">$setValidity()</a>,
+       <a href="api/ng/method/$setValidity">$setValidity()</a>,
        and return <code>undefined</code> for invalid values.</p>
 </td>
   </tr>

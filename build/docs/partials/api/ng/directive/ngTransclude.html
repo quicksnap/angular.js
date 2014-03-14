@@ -1,9 +1,9 @@
-<a href='http://github.com/angular/angular.js/edit/master/src/ng/directive/ngTransclude.js' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+<a href='http://github.com/angular/angular.js/edit/master/src/ng/directive/ngTransclude.js' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this doc</a>
 
 
 
-<a href='http://github.com/angular/angular.js/tree/master/src/ng/directive/ngTransclude.js#L3' class='view-source pull-right'>
-  <i class="icon-zoom-in">&nbsp;</i>View Source
+<a href='http://github.com/angular/angular.js/tree/master/src/ng/directive/ngTransclude.js#L3' class='view-source pull-right btn btn-primary'>
+  <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
 
@@ -56,61 +56,34 @@
 
 
   
-  <h2 id="example">Example</h2><div class="runnable-example" module="transclude" id="example-example47" outputFolder="examples/example-example47">
-<div class="runnable-example-file" name="index.html" language="html" type="html">
+  <h2 id="example">Example</h2><p>
 
 
+<div class="runnable-example"
+    path="examples/example-example47"
+    module="transclude">
 
-<div>
-<pre><code class="lang-html">  &lt;script&gt;
-    function Ctrl($scope) {
-      $scope.title = &#39;Lorem Ipsum&#39;;
-      $scope.text = &#39;Neque porro quisquam est qui dolorem ipsum quia dolor...&#39;;
-    }
+ 
+  <div class="runnable-example-file" 
+    name="index.html"
+    language="html"
+    type="html">
+    <pre><code>&lt;script&gt;&#10;  function Ctrl($scope) {&#10;    $scope.title = &#39;Lorem Ipsum&#39;;&#10;    $scope.text = &#39;Neque porro quisquam est qui dolorem ipsum quia dolor...&#39;;&#10;  }&#10;&#10;  angular.module(&#39;transclude&#39;, [])&#10;   .directive(&#39;pane&#39;, function(){&#10;      return {&#10;        restrict: &#39;E&#39;,&#10;        transclude: true,&#10;        scope: { title:&#39;@&#39; },&#10;        template: &#39;&lt;div style=&quot;border: 1px solid black;&quot;&gt;&#39; +&#10;                    &#39;&lt;div style=&quot;background-color: gray&quot;&gt;{{title}}&lt;/div&gt;&#39; +&#10;                    &#39;&lt;div ng-transclude&gt;&lt;/div&gt;&#39; +&#10;                  &#39;&lt;/div&gt;&#39;&#10;      };&#10;  });&#10;&lt;/script&gt;&#10;&lt;div ng-controller=&quot;Ctrl&quot;&gt;&#10;  &lt;input ng-model=&quot;title&quot;&gt;&lt;br&gt;&#10;  &lt;textarea ng-model=&quot;text&quot;&gt;&lt;/textarea&gt; &lt;br/&gt;&#10;  &lt;pane title=&quot;{{title}}&quot;&gt;{{text}}&lt;/pane&gt;&#10;&lt;/div&gt;</code></pre>  
+  </div>
 
-    angular.module(&#39;transclude&#39;, [])
-     .directive(&#39;pane&#39;, function(){
-        return {
-          restrict: &#39;E&#39;,
-          transclude: true,
-          scope: { title:&#39;@&#39; },
-          template: &#39;&lt;div style=&quot;border: 1px solid black;&quot;&gt;&#39; +
-                      &#39;&lt;div style=&quot;background-color: gray&quot;&gt;{{title}}&lt;/div&gt;&#39; +
-                      &#39;&lt;div ng-transclude&gt;&lt;/div&gt;&#39; +
-                    &#39;&lt;/div&gt;&#39;
-        };
-    });
-  &lt;/script&gt;
-  &lt;div ng-controller=&quot;Ctrl&quot;&gt;
-    &lt;input ng-model=&quot;title&quot;&gt;&lt;br&gt;
-    &lt;textarea ng-model=&quot;text&quot;&gt;&lt;/textarea&gt; &lt;br/&gt;
-    &lt;pane title=&quot;{{title}}&quot;&gt;{{text}}&lt;/pane&gt;
-  &lt;/div&gt;</code></pre>
+  <div class="runnable-example-file" 
+    name="protractor.js"
+    type="protractor"
+    language="js">
+    <pre><code>it(&#39;should have transcluded&#39;, function() {&#10;  var titleElement = element(by.model(&#39;title&#39;));&#10;  titleElement.clear();&#10;  titleElement.sendKeys(&#39;TITLE&#39;);&#10;  var textElement = element(by.model(&#39;text&#39;));&#10;  textElement.clear();&#10;  textElement.sendKeys(&#39;TEXT&#39;);&#10;  expect(element(by.binding(&#39;title&#39;)).getText()).toEqual(&#39;TITLE&#39;);&#10;  expect(element(by.binding(&#39;text&#39;)).getText()).toEqual(&#39;TEXT&#39;);&#10;});</code></pre>  
+  </div>
 
+
+  <iframe class="runnable-example-frame" src="examples/example-example47/index.html" name="example-example47"></iframe>
 </div>
 
-<p></div></p>
-<div class="runnable-example-file" name="protractor.js" type="protractor" language="js">
 
-
-
-<div>
-<pre><code class="lang-js">   it(&#39;should have transcluded&#39;, function() {
-     var titleElement = element(by.model(&#39;title&#39;));
-     titleElement.clear();
-     titleElement.sendKeys(&#39;TITLE&#39;);
-     var textElement = element(by.model(&#39;text&#39;));
-     textElement.clear();
-     textElement.sendKeys(&#39;TEXT&#39;);
-     expect(element(by.binding(&#39;title&#39;)).getText()).toEqual(&#39;TITLE&#39;);
-     expect(element(by.binding(&#39;text&#39;)).getText()).toEqual(&#39;TEXT&#39;);
-   });</code></pre>
-
-</div>
-
-<p></div></p>
-<p><iframe class="runnable-example-frame" src="examples/example-example47/index.html" name="example-example47"></iframe>
-</div></p>
+</p>
 
 </div>
 

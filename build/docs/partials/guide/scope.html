@@ -1,4 +1,4 @@
-<a href='http://github.com/angular/angular.js/edit/master/docs/content/guide/scope.ngdoc' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+<a href='http://github.com/angular/angular.js/edit/master/docs/content/guide/scope.ngdoc' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this doc</a>
 
 
 <h1 id="what-are-scopes-">What are Scopes?</h1>
@@ -18,8 +18,8 @@ realm&quot; (controllers, services, Angular event handlers).</p>
 <li><p>Scopes can be nested to limit access to the properties of application components while providing
 access to shared model properties. Nested scopes are either &quot;child scopes&quot; or &quot;isolate scopes&quot;.
 A &quot;child scope&quot; (prototypically) inherits properties from its parent scope. An &quot;isolate scope&quot;
-does not. See <a href="guide/directive#creating-custom-directives_demo_isolating-the-scope-of-a-directive">isolated
-scopes</a> for more information.</p>
+does not. See <a href="guide/directive#creating-custom-directives_demo_isolating-the-scope-of-a-directive">isolated</a>
+scopes for more information.</p>
 </li>
 <li><p>Scopes provide context against which <a href="guide/expression">expressions</a> are evaluated. For
 example <code>{{username}}</code> expression is meaningless, unless it is evaluated against a specific
@@ -35,41 +35,33 @@ render the updated value to the DOM.</p>
 arrangement isolates the controller from the directive as well as from DOM. This is an important
 point since it makes the controllers view agnostic, which greatly improves the testing story of
 the applications.</p>
-<div class="runnable-example" id="example-example106" outputFolder="examples/example-example106">
-<div class="runnable-example-file" name="script.js" language="js" type="js">
+<p>
 
 
+<div class="runnable-example"
+    path="examples/example-example106">
 
-<div>
-<pre><code class="lang-js">  function MyController($scope) {
-    $scope.username = &#39;World&#39;;
+ 
+  <div class="runnable-example-file" 
+    name="script.js"
+    language="js"
+    type="js">
+    <pre><code>function MyController($scope) {&#10;  $scope.username = &#39;World&#39;;&#10;&#10;  $scope.sayHello = function() {&#10;    $scope.greeting = &#39;Hello &#39; + $scope.username + &#39;!&#39;;&#10;  };&#10;}</code></pre>  
+  </div>
 
-    $scope.sayHello = function() {
-      $scope.greeting = &#39;Hello &#39; + $scope.username + &#39;!&#39;;
-    };
-  }</code></pre>
+  <div class="runnable-example-file" 
+    name="index.html"
+    language="html"
+    type="html">
+    <pre><code>&lt;div ng-controller=&quot;MyController&quot;&gt;&#10;  Your name:&#10;    &lt;input type=&quot;text&quot; ng-model=&quot;username&quot;&gt;&#10;    &lt;button ng-click=&#39;sayHello()&#39;&gt;greet&lt;/button&gt;&#10;  &lt;hr&gt;&#10;  {{greeting}}&#10;&lt;/div&gt;</code></pre>  
+  </div>
 
+
+  <iframe class="runnable-example-frame" src="examples/example-example106/index.html" name="example-example106"></iframe>
 </div>
 
-<p></div></p>
-<div class="runnable-example-file" name="index.html" language="html" type="html">
 
-
-
-<div>
-<pre><code class="lang-html">  &lt;div ng-controller=&quot;MyController&quot;&gt;
-    Your name:
-      &lt;input type=&quot;text&quot; ng-model=&quot;username&quot;&gt;
-      &lt;button ng-click=&#39;sayHello()&#39;&gt;greet&lt;/button&gt;
-    &lt;hr&gt;
-    {{greeting}}
-  &lt;/div&gt;</code></pre>
-
-</div>
-
-<p></div></p>
-<p><iframe class="runnable-example-frame" src="examples/example-example106/index.html" name="example-example106"></iframe>
-</div></p>
+</p>
 <p>In the above example notice that the <code>MyController</code> assigns <code>World</code> to the <code>username</code> property of
 the scope. The scope then notifies the <code>input</code> of the assignment, which then renders the input
 with username pre-filled. This demonstrates how a controller can write data into the scope.</p>
@@ -116,59 +108,40 @@ and so on until the root scope is reached. In JavaScript this behavior is known 
 inheritance, and child scopes prototypically inherit from their parents.</p>
 <p>This example illustrates scopes in application, and prototypical inheritance of properties. The example is followed by
 a diagram depicting the scope boundaries.</p>
-<div class="runnable-example" id="example-example107" outputFolder="examples/example-example107">
-<div class="runnable-example-file" name="index.html" language="html" type="html">
+<p>
 
 
+<div class="runnable-example"
+    path="examples/example-example107">
 
-<div>
-<pre><code class="lang-html">&lt;div class=&quot;show-scope-demo&quot;&gt;
-  &lt;div ng-controller=&quot;GreetCtrl&quot;&gt;
-    Hello {{name}}!
-  &lt;/div&gt;
-  &lt;div ng-controller=&quot;ListCtrl&quot;&gt;
-    &lt;ol&gt;
-      &lt;li ng-repeat=&quot;name in names&quot;&gt;{{name}} from {{department}}&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+ 
+  <div class="runnable-example-file" 
+    name="index.html"
+    language="html"
+    type="html">
+    <pre><code>&lt;div class=&quot;show-scope-demo&quot;&gt;&#10;&lt;div ng-controller=&quot;GreetCtrl&quot;&gt;&#10;  Hello {{name}}!&#10;&lt;/div&gt;&#10;&lt;div ng-controller=&quot;ListCtrl&quot;&gt;&#10;  &lt;ol&gt;&#10;    &lt;li ng-repeat=&quot;name in names&quot;&gt;{{name}} from {{department}}&lt;/li&gt;&#10;  &lt;/ol&gt;&#10;&lt;/div&gt;&#10;&lt;/div&gt;</code></pre>  
+  </div>
 
+  <div class="runnable-example-file" 
+    name="script.js"
+    language="js"
+    type="js">
+    <pre><code>function GreetCtrl($scope, $rootScope) {&#10;  $scope.name = &#39;World&#39;;&#10;  $rootScope.department = &#39;Angular&#39;;&#10;}&#10;&#10;function ListCtrl($scope) {&#10;  $scope.names = [&#39;Igor&#39;, &#39;Misko&#39;, &#39;Vojta&#39;];&#10;}</code></pre>  
+  </div>
+
+  <div class="runnable-example-file" 
+    name="style.css"
+    language="css"
+    type="css">
+    <pre><code>.show-scope-demo.ng-scope,&#10;.show-scope-demo .ng-scope  {&#10;  border: 1px solid red;&#10;  margin: 3px;&#10;}</code></pre>  
+  </div>
+
+
+  <iframe class="runnable-example-frame" src="examples/example-example107/index.html" name="example-example107"></iframe>
 </div>
 
-<p></div></p>
-<div class="runnable-example-file" name="script.js" language="js" type="js">
 
-
-
-<div>
-<pre><code class="lang-js">  function GreetCtrl($scope, $rootScope) {
-    $scope.name = &#39;World&#39;;
-    $rootScope.department = &#39;Angular&#39;;
-  }
-
-  function ListCtrl($scope) {
-    $scope.names = [&#39;Igor&#39;, &#39;Misko&#39;, &#39;Vojta&#39;];
-  }</code></pre>
-
-</div>
-
-<p></div></p>
-<div class="runnable-example-file" name="style.css" language="css" type="css">
-
-
-
-<div>
-<pre><code class="lang-css">  .show-scope-demo.ng-scope,
-  .show-scope-demo .ng-scope  {
-    border: 1px solid red;
-    margin: 3px;
-  }</code></pre>
-
-</div>
-
-<p></div></p>
-<p><iframe class="runnable-example-frame" src="examples/example-example107/index.html" name="example-example107"></iframe>
-</div></p>
+</p>
 <p><img class="center" src="img/guide/concepts-scope.png"></p>
 <p>Notice that Angular automatically places <code>ng-scope</code> class on elements where scopes are
 attached. The <code>&lt;style&gt;</code> definition in this example highlights in red the new scope locations. The
@@ -196,49 +169,33 @@ variable.</p>
 </ol>
 <h2 id="scope-events-propagation">Scope Events Propagation</h2>
 <p>Scopes can propagate events in similar fashion to DOM events. The event can be <a href="api/ng/type/$rootScope.Scope#$broadcast">broadcasted</a> to the scope children or <a href="api/ng/type/$rootScope.Scope#$emit">emitted</a> to scope parents.</p>
-<div class="runnable-example" id="example-example108" outputFolder="examples/example-example108">
-<div class="runnable-example-file" name="script.js" language="js" type="js">
+<p>
 
 
+<div class="runnable-example"
+    path="examples/example-example108">
 
-<div>
-<pre><code class="lang-js">  function EventController($scope) {
-    $scope.count = 0;
-    $scope.$on(&#39;MyEvent&#39;, function() {
-      $scope.count++;
-    });
-  }</code></pre>
+ 
+  <div class="runnable-example-file" 
+    name="script.js"
+    language="js"
+    type="js">
+    <pre><code>function EventController($scope) {&#10;  $scope.count = 0;&#10;  $scope.$on(&#39;MyEvent&#39;, function() {&#10;    $scope.count++;&#10;  });&#10;}</code></pre>  
+  </div>
 
+  <div class="runnable-example-file" 
+    name="index.html"
+    language="html"
+    type="html">
+    <pre><code>&lt;div ng-controller=&quot;EventController&quot;&gt;&#10;  Root scope &lt;tt&gt;MyEvent&lt;/tt&gt; count: {{count}}&#10;  &lt;ul&gt;&#10;    &lt;li ng-repeat=&quot;i in [1]&quot; ng-controller=&quot;EventController&quot;&gt;&#10;      &lt;button ng-click=&quot;$emit(&#39;MyEvent&#39;)&quot;&gt;$emit(&#39;MyEvent&#39;)&lt;/button&gt;&#10;      &lt;button ng-click=&quot;$broadcast(&#39;MyEvent&#39;)&quot;&gt;$broadcast(&#39;MyEvent&#39;)&lt;/button&gt;&#10;      &lt;br&gt;&#10;      Middle scope &lt;tt&gt;MyEvent&lt;/tt&gt; count: {{count}}&#10;      &lt;ul&gt;&#10;        &lt;li ng-repeat=&quot;item in [1, 2]&quot; ng-controller=&quot;EventController&quot;&gt;&#10;          Leaf scope &lt;tt&gt;MyEvent&lt;/tt&gt; count: {{count}}&#10;        &lt;/li&gt;&#10;      &lt;/ul&gt;&#10;    &lt;/li&gt;&#10;  &lt;/ul&gt;&#10;&lt;/div&gt;</code></pre>  
+  </div>
+
+
+  <iframe class="runnable-example-frame" src="examples/example-example108/index.html" name="example-example108"></iframe>
 </div>
 
-<p></div></p>
-<div class="runnable-example-file" name="index.html" language="html" type="html">
 
-
-
-<div>
-<pre><code class="lang-html">  &lt;div ng-controller=&quot;EventController&quot;&gt;
-    Root scope &lt;tt&gt;MyEvent&lt;/tt&gt; count: {{count}}
-    &lt;ul&gt;
-      &lt;li ng-repeat=&quot;i in [1]&quot; ng-controller=&quot;EventController&quot;&gt;
-        &lt;button ng-click=&quot;$emit(&#39;MyEvent&#39;)&quot;&gt;$emit(&#39;MyEvent&#39;)&lt;/button&gt;
-        &lt;button ng-click=&quot;$broadcast(&#39;MyEvent&#39;)&quot;&gt;$broadcast(&#39;MyEvent&#39;)&lt;/button&gt;
-        &lt;br&gt;
-        Middle scope &lt;tt&gt;MyEvent&lt;/tt&gt; count: {{count}}
-        &lt;ul&gt;
-          &lt;li ng-repeat=&quot;item in [1, 2]&quot; ng-controller=&quot;EventController&quot;&gt;
-            Leaf scope &lt;tt&gt;MyEvent&lt;/tt&gt; count: {{count}}
-          &lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/div&gt;</code></pre>
-
-</div>
-
-<p></div></p>
-<p><iframe class="runnable-example-frame" src="examples/example-example108/index.html" name="example-example108"></iframe>
-</div></p>
+</p>
 <h2 id="scope-life-cycle">Scope Life Cycle</h2>
 <p>The normal flow of a browser receiving an event is that it executes a corresponding JavaScript
 callback. Once the callback completes the browser re-renders the DOM and returns to waiting for

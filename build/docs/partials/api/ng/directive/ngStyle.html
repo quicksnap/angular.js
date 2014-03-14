@@ -1,9 +1,9 @@
-<a href='http://github.com/angular/angular.js/edit/master/src/ng/directive/ngStyle.js' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+<a href='http://github.com/angular/angular.js/edit/master/src/ng/directive/ngStyle.js' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this doc</a>
 
 
 
-<a href='http://github.com/angular/angular.js/tree/master/src/ng/directive/ngStyle.js#L3' class='view-source pull-right'>
-  <i class="icon-zoom-in">&nbsp;</i>View Source
+<a href='http://github.com/angular/angular.js/tree/master/src/ng/directive/ngStyle.js#L3' class='view-source pull-right btn btn-primary'>
+  <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
 
@@ -90,53 +90,40 @@
 
 
   
-  <h2 id="example">Example</h2><div class="runnable-example" id="example-example45" outputFolder="examples/example-example45">
-<div class="runnable-example-file" name="index.html" language="html" type="html">
+  <h2 id="example">Example</h2><p>
 
 
+<div class="runnable-example"
+    path="examples/example-example45">
 
-<div>
-<pre><code class="lang-html">   &lt;input type=&quot;button&quot; value=&quot;set&quot; ng-click=&quot;myStyle={color:&#39;red&#39;}&quot;&gt;
-   &lt;input type=&quot;button&quot; value=&quot;clear&quot; ng-click=&quot;myStyle={}&quot;&gt;
-   &lt;br/&gt;
-   &lt;span ng-style=&quot;myStyle&quot;&gt;Sample Text&lt;/span&gt;
-   &lt;pre&gt;myStyle={{myStyle}}&lt;/pre&gt;</code></pre>
+ 
+  <div class="runnable-example-file" 
+    name="index.html"
+    language="html"
+    type="html">
+    <pre><code>&lt;input type=&quot;button&quot; value=&quot;set&quot; ng-click=&quot;myStyle={color:&#39;red&#39;}&quot;&gt;&#10;&lt;input type=&quot;button&quot; value=&quot;clear&quot; ng-click=&quot;myStyle={}&quot;&gt;&#10;&lt;br/&gt;&#10;&lt;span ng-style=&quot;myStyle&quot;&gt;Sample Text&lt;/span&gt;&#10;&lt;pre&gt;myStyle={{myStyle}}&lt;/pre&gt;</code></pre>  
+  </div>
 
+  <div class="runnable-example-file" 
+    name="style.css"
+    language="css"
+    type="css">
+    <pre><code>span {&#10;  color: black;&#10;}</code></pre>  
+  </div>
+
+  <div class="runnable-example-file" 
+    name="protractor.js"
+    type="protractor"
+    language="js">
+    <pre><code>var colorSpan = element(by.css(&#39;span&#39;));&#10;&#10;it(&#39;should check ng-style&#39;, function() {&#10;  expect(colorSpan.getCssValue(&#39;color&#39;)).toBe(&#39;rgba(0, 0, 0, 1)&#39;);&#10;  element(by.css(&#39;input[value=set]&#39;)).click();&#10;  expect(colorSpan.getCssValue(&#39;color&#39;)).toBe(&#39;rgba(255, 0, 0, 1)&#39;);&#10;  element(by.css(&#39;input[value=clear]&#39;)).click();&#10;  expect(colorSpan.getCssValue(&#39;color&#39;)).toBe(&#39;rgba(0, 0, 0, 1)&#39;);&#10;});</code></pre>  
+  </div>
+
+
+  <iframe class="runnable-example-frame" src="examples/example-example45/index.html" name="example-example45"></iframe>
 </div>
 
-<p></div></p>
-<div class="runnable-example-file" name="style.css" language="css" type="css">
 
-
-
-<div>
-<pre><code class="lang-css">  span {
-    color: black;
-  }</code></pre>
-
-</div>
-
-<p></div></p>
-<div class="runnable-example-file" name="protractor.js" type="protractor" language="js">
-
-
-
-<div>
-<pre><code class="lang-js">  var colorSpan = element(by.css(&#39;span&#39;));
-
-  it(&#39;should check ng-style&#39;, function() {
-    expect(colorSpan.getCssValue(&#39;color&#39;)).toBe(&#39;rgba(0, 0, 0, 1)&#39;);
-    element(by.css(&#39;input[value=set]&#39;)).click();
-    expect(colorSpan.getCssValue(&#39;color&#39;)).toBe(&#39;rgba(255, 0, 0, 1)&#39;);
-    element(by.css(&#39;input[value=clear]&#39;)).click();
-    expect(colorSpan.getCssValue(&#39;color&#39;)).toBe(&#39;rgba(0, 0, 0, 1)&#39;);
-  });</code></pre>
-
-</div>
-
-<p></div></p>
-<p><iframe class="runnable-example-frame" src="examples/example-example45/index.html" name="example-example45"></iframe>
-</div></p>
+</p>
 
 </div>
 

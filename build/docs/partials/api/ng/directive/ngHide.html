@@ -1,9 +1,9 @@
-<a href='http://github.com/angular/angular.js/edit/master/src/ng/directive/ngShowHide.js' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+<a href='http://github.com/angular/angular.js/edit/master/src/ng/directive/ngShowHide.js' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this doc</a>
 
 
 
-<a href='http://github.com/angular/angular.js/tree/master/src/ng/directive/ngShowHide.js#L163' class='view-source pull-right'>
-  <i class="icon-zoom-in">&nbsp;</i>View Source
+<a href='http://github.com/angular/angular.js/tree/master/src/ng/directive/ngShowHide.js#L163' class='view-source pull-right btn btn-primary'>
+  <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
 
@@ -146,97 +146,50 @@ addClass: .ng-hide - happens after the ngHide expression evaluates to a non trut
 
 
   
-  <h2 id="example">Example</h2><div class="runnable-example" module="ngAnimate" deps="angular-animate.js" animations="true" id="example-example44" outputFolder="examples/example-example44">
-<div class="runnable-example-file" name="index.html" language="html" type="html">
+  <h2 id="example">Example</h2><p>
 
 
+<div class="runnable-example"
+    path="examples/example-example44"
+    module="ngAnimate"
+    deps="angular-animate.js"
+    animations="true">
 
-<div>
-<pre><code class="lang-html">  Click me: &lt;input type=&quot;checkbox&quot; ng-model=&quot;checked&quot;&gt;&lt;br/&gt;
-  &lt;div&gt;
-    Show:
-    &lt;div class=&quot;check-element animate-hide&quot; ng-show=&quot;checked&quot;&gt;
-      &lt;span class=&quot;glyphicon glyphicon-thumbs-up&quot;&gt;&lt;/span&gt; I show up when your checkbox is checked.
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div&gt;
-    Hide:
-    &lt;div class=&quot;check-element animate-hide&quot; ng-hide=&quot;checked&quot;&gt;
-      &lt;span class=&quot;glyphicon glyphicon-thumbs-down&quot;&gt;&lt;/span&gt; I hide when your checkbox is checked.
-    &lt;/div&gt;
-  &lt;/div&gt;</code></pre>
+ 
+  <div class="runnable-example-file" 
+    name="index.html"
+    language="html"
+    type="html">
+    <pre><code>Click me: &lt;input type=&quot;checkbox&quot; ng-model=&quot;checked&quot;&gt;&lt;br/&gt;&#10;&lt;div&gt;&#10;  Show:&#10;  &lt;div class=&quot;check-element animate-hide&quot; ng-show=&quot;checked&quot;&gt;&#10;    &lt;span class=&quot;glyphicon glyphicon-thumbs-up&quot;&gt;&lt;/span&gt; I show up when your checkbox is checked.&#10;  &lt;/div&gt;&#10;&lt;/div&gt;&#10;&lt;div&gt;&#10;  Hide:&#10;  &lt;div class=&quot;check-element animate-hide&quot; ng-hide=&quot;checked&quot;&gt;&#10;    &lt;span class=&quot;glyphicon glyphicon-thumbs-down&quot;&gt;&lt;/span&gt; I hide when your checkbox is checked.&#10;  &lt;/div&gt;&#10;&lt;/div&gt;</code></pre>  
+  </div>
 
+  <div class="runnable-example-file" 
+    name="glyphicons.css"
+    language="css"
+    type="css">
+    <pre><code>@import url(//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css);</code></pre>  
+  </div>
+
+  <div class="runnable-example-file" 
+    name="animations.css"
+    language="css"
+    type="css">
+    <pre><code>.animate-hide {&#10;  -webkit-transition:all linear 0.5s;&#10;  transition:all linear 0.5s;&#10;  line-height:20px;&#10;  opacity:1;&#10;  padding:10px;&#10;  border:1px solid black;&#10;  background:white;&#10;}&#10;&#10;.animate-hide.ng-hide-add,&#10;.animate-hide.ng-hide-remove {&#10;  display:block!important;&#10;}&#10;&#10;.animate-hide.ng-hide {&#10;  line-height:0;&#10;  opacity:0;&#10;  padding:0 10px;&#10;}&#10;&#10;.check-element {&#10;  padding:10px;&#10;  border:1px solid black;&#10;  background:white;&#10;}</code></pre>  
+  </div>
+
+  <div class="runnable-example-file" 
+    name="protractor.js"
+    type="protractor"
+    language="js">
+    <pre><code>var thumbsUp = element(by.css(&#39;span.glyphicon-thumbs-up&#39;));&#10;var thumbsDown = element(by.css(&#39;span.glyphicon-thumbs-down&#39;));&#10;&#10;it(&#39;should check ng-show / ng-hide&#39;, function() {&#10;  expect(thumbsUp.isDisplayed()).toBeFalsy();&#10;  expect(thumbsDown.isDisplayed()).toBeTruthy();&#10;&#10;  element(by.model(&#39;checked&#39;)).click();&#10;&#10;  expect(thumbsUp.isDisplayed()).toBeTruthy();&#10;  expect(thumbsDown.isDisplayed()).toBeFalsy();&#10;});</code></pre>  
+  </div>
+
+
+  <iframe class="runnable-example-frame" src="examples/example-example44/index.html" name="example-example44"></iframe>
 </div>
 
-<p></div></p>
-<div class="runnable-example-file" name="glyphicons.css" language="css" type="css">
 
-
-
-<div>
-<pre><code class="lang-css">  @import url(//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css);</code></pre>
-
-</div>
-
-<p></div></p>
-<div class="runnable-example-file" name="animations.css" language="css" type="css">
-
-
-
-<div>
-<pre><code class="lang-css">  .animate-hide {
-    -webkit-transition:all linear 0.5s;
-    transition:all linear 0.5s;
-    line-height:20px;
-    opacity:1;
-    padding:10px;
-    border:1px solid black;
-    background:white;
-  }
-
-  .animate-hide.ng-hide-add,
-  .animate-hide.ng-hide-remove {
-    display:block!important;
-  }
-
-  .animate-hide.ng-hide {
-    line-height:0;
-    opacity:0;
-    padding:0 10px;
-  }
-
-  .check-element {
-    padding:10px;
-    border:1px solid black;
-    background:white;
-  }</code></pre>
-
-</div>
-
-<p></div></p>
-<div class="runnable-example-file" name="protractor.js" type="protractor" language="js">
-
-
-
-<div>
-<pre><code class="lang-js">  var thumbsUp = element(by.css(&#39;span.glyphicon-thumbs-up&#39;));
-  var thumbsDown = element(by.css(&#39;span.glyphicon-thumbs-down&#39;));
-
-  it(&#39;should check ng-show / ng-hide&#39;, function() {
-    expect(thumbsUp.isDisplayed()).toBeFalsy();
-    expect(thumbsDown.isDisplayed()).toBeTruthy();
-
-    element(by.model(&#39;checked&#39;)).click();
-
-    expect(thumbsUp.isDisplayed()).toBeTruthy();
-    expect(thumbsDown.isDisplayed()).toBeFalsy();
-  });</code></pre>
-
-</div>
-
-<p></div></p>
-<p><iframe class="runnable-example-frame" src="examples/example-example44/index.html" name="example-example44"></iframe>
-</div></p>
+</p>
 
 </div>
 

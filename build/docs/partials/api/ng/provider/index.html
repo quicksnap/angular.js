@@ -13,7 +13,9 @@
       
       <tr>
         <td><a href="api/ng/provider/$animateProvider">$animateProvider</a></td>
-        <td><p>Default implementation of $animate that doesn&#39;t perform any animations, instead just</p>
+        <td><p>Default implementation of $animate that doesn&#39;t perform any animations, instead just
+synchronously performs DOM
+updates and calls done() callbacks.</p>
 </td>
       </tr>
       
@@ -24,13 +26,16 @@
       
       <tr>
         <td><a href="api/ng/provider/$controllerProvider">$controllerProvider</a></td>
-        <td><p>The <a href="api/ng/service/$controller">$controller service</a> is used by Angular to create new</p>
+        <td><p>The <a href="api/ng/service/$controller">$controller service</a> is used by Angular to create new
+controllers.</p>
 </td>
       </tr>
       
       <tr>
         <td><a href="api/ng/provider/$filterProvider">$filterProvider</a></td>
-        <td><p>Filters are just functions which transform input to an output. However filters need to be</p>
+        <td><p>Filters are just functions which transform input to an output. However filters need to be
+Dependency Injected. To achieve this a filter definition consists of a factory function which is
+annotated with dependencies and is responsible for creating a filter function.</p>
 </td>
       </tr>
       
@@ -54,7 +59,8 @@
       
       <tr>
         <td><a href="api/ng/provider/$parseProvider">$parseProvider</a></td>
-        <td><p><code>$parseProvider</code> can be used for configuring the default behavior of the <a href="api/ng/service/$parse">$parse</a></p>
+        <td><p><code>$parseProvider</code> can be used for configuring the default behavior of the <a href="api/ng/service/$parse">$parse</a>
+ service.</p>
 </td>
       </tr>
       
@@ -66,12 +72,19 @@
       
       <tr>
         <td><a href="api/ng/provider/$sceDelegateProvider">$sceDelegateProvider</a></td>
-        <td><p>The <code>$sceDelegateProvider</code> provider allows developers to configure the <a href="ng.$sceDelegate</p>"></td>
+        <td><p>The <code>$sceDelegateProvider</code> provider allows developers to configure the <a href="api/ng/service/$sceDelegate">$sceDelegate</a> service.  This allows one to get/set the whitelists and blacklists used to ensure
+that the URLs used for sourcing Angular templates are safe.  Refer <a href="api/ng/provider/$sceDelegateProvider#resourceUrlWhitelist">$sceDelegateProvider.resourceUrlWhitelist</a> and
+<a href="api/ng/provider/$sceDelegateProvider#resourceUrlBlacklist">$sceDelegateProvider.resourceUrlBlacklist</a></p>
+</td>
       </tr>
       
       <tr>
-        <td>{@link module:ng.provider:$sceProvider $sceProvider</a></td>
+        <td><a href="api/ng/provider/$sceProvider">$sceProvider</a></td>
         <td><p>The $sceProvider provider allows developers to configure the <a href="api/ng/service/$sce">$sce</a> service.</p>
+<ul>
+<li>enable/disable Strict Contextual Escaping (SCE) in a module</li>
+<li>override the default implementation with a custom delegate</li>
+</ul>
 </td>
       </tr>
       

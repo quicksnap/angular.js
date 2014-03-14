@@ -1,9 +1,9 @@
-<a href='http://github.com/angular/angular.js/edit/master/src/ngResource/resource.js' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+<a href='http://github.com/angular/angular.js/edit/master/src/ngResource/resource.js' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this doc</a>
 
 
 
-<a href='http://github.com/angular/angular.js/tree/master/src/ngResource/resource.js#L62' class='view-source pull-right'>
-  <i class="icon-zoom-in">&nbsp;</i>View Source
+<a href='http://github.com/angular/angular.js/tree/master/src/ngResource/resource.js#L62' class='view-source pull-right btn btn-primary'>
+  <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
 
@@ -280,7 +280,7 @@ When the data is returned from the server then the object is an instance of the 
 all of the non-GET methods are available with <code>$</code> prefix. This allows you to easily support CRUD
 operations (create, read, update, delete) on server-side data.</p>
 <pre><code class="lang-js">     var User = $resource(&#39;/user/:userId&#39;, {userId:&#39;@id&#39;});
-     var user = User.get({userId:123}, function() {
+     User.get({userId:123}, function(user) {
        user.abc = true;
        user.$save();
      });</code></pre>
@@ -295,6 +295,12 @@ could rewrite the above example and get access to http headers as:</p>
          //putResponseHeaders =&gt; $http header getter
        });
      });</code></pre>
+<p>You can also access the raw <code>$http</code> promise via the <code>$promise</code> property on the object returned</p>
+<pre><code>     var User = $resource(&#39;/user/:userId&#39;, {userId:&#39;@id&#39;});
+     User.get({userId:123})
+         .$promise.then(function(user) {
+           $scope.user = user;
+         });</code></pre>
 <h1 id="creating-a-custom-put-request">Creating a custom &#39;PUT&#39; request</h1>
 <p>In this example we create a custom method on our resource to make a PUT request</p>
 <pre><code class="lang-js">    var app = angular.module(&#39;app&#39;, [&#39;ngResource&#39;, &#39;ngRoute&#39;]);

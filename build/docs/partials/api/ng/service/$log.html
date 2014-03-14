@@ -1,9 +1,9 @@
-<a href='http://github.com/angular/angular.js/edit/master/src/ng/log.js' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+<a href='http://github.com/angular/angular.js/edit/master/src/ng/log.js' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this doc</a>
 
 
 
-<a href='http://github.com/angular/angular.js/tree/master/src/ng/log.js#L3' class='view-source pull-right'>
-  <i class="icon-zoom-in">&nbsp;</i>View Source
+<a href='http://github.com/angular/angular.js/tree/master/src/ng/log.js#L3' class='view-source pull-right btn btn-primary'>
+  <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
 
@@ -131,40 +131,33 @@ into the browser&#39;s console (if present).</p>
 
 
   
-  <h2 id="example">Example</h2><div class="runnable-example" id="example-example60" outputFolder="examples/example-example60">
-<div class="runnable-example-file" name="script.js" language="js" type="js">
+  <h2 id="example">Example</h2><p>
 
 
+<div class="runnable-example"
+    path="examples/example-example60">
 
-<div>
-<pre><code class="lang-js">  function LogCtrl($scope, $log) {
-    $scope.$log = $log;
-    $scope.message = &#39;Hello World!&#39;;
-  }</code></pre>
+ 
+  <div class="runnable-example-file" 
+    name="script.js"
+    language="js"
+    type="js">
+    <pre><code>function LogCtrl($scope, $log) {&#10;  $scope.$log = $log;&#10;  $scope.message = &#39;Hello World!&#39;;&#10;}</code></pre>  
+  </div>
 
+  <div class="runnable-example-file" 
+    name="index.html"
+    language="html"
+    type="html">
+    <pre><code>&lt;div ng-controller=&quot;LogCtrl&quot;&gt;&#10;  &lt;p&gt;Reload this page with open console, enter text and hit the log button...&lt;/p&gt;&#10;  Message:&#10;  &lt;input type=&quot;text&quot; ng-model=&quot;message&quot;/&gt;&#10;  &lt;button ng-click=&quot;$log.log(message)&quot;&gt;log&lt;/button&gt;&#10;  &lt;button ng-click=&quot;$log.warn(message)&quot;&gt;warn&lt;/button&gt;&#10;  &lt;button ng-click=&quot;$log.info(message)&quot;&gt;info&lt;/button&gt;&#10;  &lt;button ng-click=&quot;$log.error(message)&quot;&gt;error&lt;/button&gt;&#10;&lt;/div&gt;</code></pre>  
+  </div>
+
+
+  <iframe class="runnable-example-frame" src="examples/example-example60/index.html" name="example-example60"></iframe>
 </div>
 
-<p></div></p>
-<div class="runnable-example-file" name="index.html" language="html" type="html">
 
-
-
-<div>
-<pre><code class="lang-html">  &lt;div ng-controller=&quot;LogCtrl&quot;&gt;
-    &lt;p&gt;Reload this page with open console, enter text and hit the log button...&lt;/p&gt;
-    Message:
-    &lt;input type=&quot;text&quot; ng-model=&quot;message&quot;/&gt;
-    &lt;button ng-click=&quot;$log.log(message)&quot;&gt;log&lt;/button&gt;
-    &lt;button ng-click=&quot;$log.warn(message)&quot;&gt;warn&lt;/button&gt;
-    &lt;button ng-click=&quot;$log.info(message)&quot;&gt;info&lt;/button&gt;
-    &lt;button ng-click=&quot;$log.error(message)&quot;&gt;error&lt;/button&gt;
-  &lt;/div&gt;</code></pre>
-
-</div>
-
-<p></div></p>
-<p><iframe class="runnable-example-frame" src="examples/example-example60/index.html" name="example-example60"></iframe>
-</div></p>
+</p>
 
 </div>
 

@@ -1,9 +1,9 @@
-<a href='http://github.com/angular/angular.js/edit/master/src/ng/directive/input.js' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+<a href='http://github.com/angular/angular.js/edit/master/src/ng/directive/input.js' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this doc</a>
 
 
 
-<a href='http://github.com/angular/angular.js/tree/master/src/ng/directive/input.js#L172' class='view-source pull-right'>
-  <i class="icon-zoom-in">&nbsp;</i>View Source
+<a href='http://github.com/angular/angular.js/tree/master/src/ng/directive/input.js#L596' class='view-source pull-right btn btn-primary'>
+  <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
 
@@ -198,68 +198,34 @@ valid URL.</p>
 
 
   
-  <h2 id="example">Example</h2><div class="runnable-example" name="url-input-directive" id="example-url-input-directive" outputFolder="examples/example-url-input-directive">
-<div class="runnable-example-file" name="index.html" language="html" type="html">
+  <h2 id="example">Example</h2><p>
 
 
+<div class="runnable-example"
+    path="examples/example-url-input-directive"
+    name="url-input-directive">
 
-<div>
-<pre><code class="lang-html"> &lt;script&gt;
-   function Ctrl($scope) {
-     $scope.text = &#39;<a href="http://google.com&amp;#39">http://google.com&amp;#39</a>;;
-   }
- &lt;/script&gt;
- &lt;form name=&quot;myForm&quot; ng-controller=&quot;Ctrl&quot;&gt;
-   URL: &lt;input type=&quot;url&quot; name=&quot;input&quot; ng-model=&quot;text&quot; required&gt;
-   &lt;span class=&quot;error&quot; ng-show=&quot;myForm.input.$error.required&quot;&gt;
-     Required!&lt;/span&gt;
-   &lt;span class=&quot;error&quot; ng-show=&quot;myForm.input.$error.url&quot;&gt;
-     Not valid url!&lt;/span&gt;
-   &lt;tt&gt;text = {{text}}&lt;/tt&gt;&lt;br/&gt;
-   &lt;tt&gt;myForm.input.$valid = {{myForm.input.$valid}}&lt;/tt&gt;&lt;br/&gt;
-   &lt;tt&gt;myForm.input.$error = {{myForm.input.$error}}&lt;/tt&gt;&lt;br/&gt;
-   &lt;tt&gt;myForm.$valid = {{myForm.$valid}}&lt;/tt&gt;&lt;br/&gt;
-   &lt;tt&gt;myForm.$error.required = {{!!myForm.$error.required}}&lt;/tt&gt;&lt;br/&gt;
-   &lt;tt&gt;myForm.$error.url = {{!!myForm.$error.url}}&lt;/tt&gt;&lt;br/&gt;
-  &lt;/form&gt;</code></pre>
+ 
+  <div class="runnable-example-file" 
+    name="index.html"
+    language="html"
+    type="html">
+    <pre><code>&lt;script&gt;&#10;  function Ctrl($scope) {&#10;    $scope.text = &#39;http://google.com&#39;;&#10;  }&#10;&lt;/script&gt;&#10;&lt;form name=&quot;myForm&quot; ng-controller=&quot;Ctrl&quot;&gt;&#10;  URL: &lt;input type=&quot;url&quot; name=&quot;input&quot; ng-model=&quot;text&quot; required&gt;&#10;  &lt;span class=&quot;error&quot; ng-show=&quot;myForm.input.$error.required&quot;&gt;&#10;    Required!&lt;/span&gt;&#10;  &lt;span class=&quot;error&quot; ng-show=&quot;myForm.input.$error.url&quot;&gt;&#10;    Not valid url!&lt;/span&gt;&#10;  &lt;tt&gt;text = {{text}}&lt;/tt&gt;&lt;br/&gt;&#10;  &lt;tt&gt;myForm.input.$valid = {{myForm.input.$valid}}&lt;/tt&gt;&lt;br/&gt;&#10;  &lt;tt&gt;myForm.input.$error = {{myForm.input.$error}}&lt;/tt&gt;&lt;br/&gt;&#10;  &lt;tt&gt;myForm.$valid = {{myForm.$valid}}&lt;/tt&gt;&lt;br/&gt;&#10;  &lt;tt&gt;myForm.$error.required = {{!!myForm.$error.required}}&lt;/tt&gt;&lt;br/&gt;&#10;  &lt;tt&gt;myForm.$error.url = {{!!myForm.$error.url}}&lt;/tt&gt;&lt;br/&gt;&#10; &lt;/form&gt;</code></pre>  
+  </div>
 
+  <div class="runnable-example-file" 
+    name="protractor.js"
+    type="protractor"
+    language="js">
+    <pre><code>var text = element(by.binding(&#39;text&#39;));&#10;var valid = element(by.binding(&#39;myForm.input.$valid&#39;));&#10;var input = element(by.model(&#39;text&#39;));&#10;&#10;it(&#39;should initialize to model&#39;, function() {&#10;  expect(text.getText()).toContain(&#39;http://google.com&#39;);&#10;  expect(valid.getText()).toContain(&#39;true&#39;);&#10;});&#10;&#10;it(&#39;should be invalid if empty&#39;, function() {&#10;  input.clear();&#10;  input.sendKeys(&#39;&#39;);&#10;&#10;  expect(text.getText()).toEqual(&#39;text =&#39;);&#10;  expect(valid.getText()).toContain(&#39;false&#39;);&#10;});&#10;&#10;it(&#39;should be invalid if not url&#39;, function() {&#10;  input.clear();&#10;  input.sendKeys(&#39;box&#39;);&#10;&#10;  expect(valid.getText()).toContain(&#39;false&#39;);&#10;});</code></pre>  
+  </div>
+
+
+  <iframe class="runnable-example-frame" src="examples/example-url-input-directive/index.html" name="example-url-input-directive"></iframe>
 </div>
 
-<p></div></p>
-<div class="runnable-example-file" name="protractor.js" type="protractor" language="js">
 
-
-
-<div>
-<pre><code class="lang-js">  var text = element(by.binding(&#39;text&#39;));
-  var valid = element(by.binding(&#39;myForm.input.$valid&#39;));
-  var input = element(by.model(&#39;text&#39;));
-
-  it(&#39;should initialize to model&#39;, function() {
-    expect(text.getText()).toContain(&#39;<a href="http://google.com&amp;#39">http://google.com&amp;#39</a>;);
-    expect(valid.getText()).toContain(&#39;true&#39;);
-  });
-
-  it(&#39;should be invalid if empty&#39;, function() {
-    input.clear();
-    input.sendKeys(&#39;&#39;);
-
-    expect(text.getText()).toEqual(&#39;text =&#39;);
-    expect(valid.getText()).toContain(&#39;false&#39;);
-  });
-
-  it(&#39;should be invalid if not url&#39;, function() {
-    input.clear();
-    input.sendKeys(&#39;box&#39;);
-
-    expect(valid.getText()).toContain(&#39;false&#39;);
-  });</code></pre>
-
-</div>
-
-<p></div></p>
-<p><iframe class="runnable-example-frame" src="examples/example-url-input-directive/index.html" name="example-url-input-directive"></iframe>
-</div></p>
+</p>
 
 </div>
 

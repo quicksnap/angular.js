@@ -1,9 +1,9 @@
-<a href='http://github.com/angular/angular.js/edit/master/src/ng/directive/ngController.js' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+<a href='http://github.com/angular/angular.js/edit/master/src/ng/directive/ngController.js' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this doc</a>
 
 
 
-<a href='http://github.com/angular/angular.js/tree/master/src/ng/directive/ngController.js#L3' class='view-source pull-right'>
-  <i class="icon-zoom-in">&nbsp;</i>View Source
+<a href='http://github.com/angular/angular.js/tree/master/src/ng/directive/ngController.js#L3' class='view-source pull-right btn btn-primary'>
+  <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
 
@@ -107,191 +107,61 @@ easily be called from the angular markup. Notice that the scope becomes the <cod
 controller&#39;s instance. This allows for easy access to the view data from the controller. Also
 notice that any changes to the data are automatically reflected in the View without the need
 for a manual update. The example is shown in two different declaration styles you may use
-according to preference.</p>
-<div class="runnable-example" id="example-example20" outputFolder="examples/example-example20">
-<div class="runnable-example-file" name="index.html" language="html" type="html">
+according to preference.
+   
 
 
+<div class="runnable-example"
+    path="examples/example-example20">
 
-<div>
-<pre><code class="lang-html"> &lt;script&gt;
-   function SettingsController1() {
-     this.name = &quot;John Smith&quot;;
-     this.contacts = [
-       {type: &#39;phone&#39;, value: &#39;408 555 1212&#39;},
-       {type: &#39;email&#39;, value: &#39;john.smith@example.org&#39;} ];
-     };
+ 
+  <div class="runnable-example-file" 
+    name="index.html"
+    language="html"
+    type="html">
+    <pre><code>&lt;script&gt;&#10;  function SettingsController1() {&#10;    this.name = &quot;John Smith&quot;;&#10;    this.contacts = [&#10;      {type: &#39;phone&#39;, value: &#39;408 555 1212&#39;},&#10;      {type: &#39;email&#39;, value: &#39;john.smith@example.org&#39;} ];&#10;    };&#10;&#10;  SettingsController1.prototype.greet = function() {&#10;    alert(this.name);&#10;  };&#10;&#10;  SettingsController1.prototype.addContact = function() {&#10;    this.contacts.push({type: &#39;email&#39;, value: &#39;yourname@example.org&#39;});&#10;  };&#10;&#10;  SettingsController1.prototype.removeContact = function(contactToRemove) {&#10;   var index = this.contacts.indexOf(contactToRemove);&#10;    this.contacts.splice(index, 1);&#10;  };&#10;&#10;  SettingsController1.prototype.clearContact = function(contact) {&#10;    contact.type = &#39;phone&#39;;&#10;    contact.value = &#39;&#39;;&#10;  };&#10;&lt;/script&gt;&#10;&lt;div id=&quot;ctrl-as-exmpl&quot; ng-controller=&quot;SettingsController1 as settings&quot;&gt;&#10;  Name: &lt;input type=&quot;text&quot; ng-model=&quot;settings.name&quot;/&gt;&#10;  [ &lt;a href=&quot;&quot; ng-click=&quot;settings.greet()&quot;&gt;greet&lt;/a&gt; ]&lt;br/&gt;&#10;  Contact:&#10;  &lt;ul&gt;&#10;    &lt;li ng-repeat=&quot;contact in settings.contacts&quot;&gt;&#10;      &lt;select ng-model=&quot;contact.type&quot;&gt;&#10;         &lt;option&gt;phone&lt;/option&gt;&#10;         &lt;option&gt;email&lt;/option&gt;&#10;      &lt;/select&gt;&#10;      &lt;input type=&quot;text&quot; ng-model=&quot;contact.value&quot;/&gt;&#10;      [ &lt;a href=&quot;&quot; ng-click=&quot;settings.clearContact(contact)&quot;&gt;clear&lt;/a&gt;&#10;      | &lt;a href=&quot;&quot; ng-click=&quot;settings.removeContact(contact)&quot;&gt;X&lt;/a&gt; ]&#10;    &lt;/li&gt;&#10;    &lt;li&gt;[ &lt;a href=&quot;&quot; ng-click=&quot;settings.addContact()&quot;&gt;add&lt;/a&gt; ]&lt;/li&gt;&#10; &lt;/ul&gt;&#10;&lt;/div&gt;</code></pre>  
+  </div>
 
-   SettingsController1.prototype.greet = function() {
-     alert(this.name);
-   };
+  <div class="runnable-example-file" 
+    name="protractor.js"
+    type="protractor"
+    language="js">
+    <pre><code>it(&#39;should check controller as&#39;, function() {&#10;  var container = element(by.id(&#39;ctrl-as-exmpl&#39;));&#10;&#10;  expect(container.findElement(by.model(&#39;settings.name&#39;))&#10;      .getAttribute(&#39;value&#39;)).toBe(&#39;John Smith&#39;);&#10;&#10;  var firstRepeat =&#10;      container.findElement(by.repeater(&#39;contact in settings.contacts&#39;).row(0));&#10;  var secondRepeat =&#10;      container.findElement(by.repeater(&#39;contact in settings.contacts&#39;).row(1));&#10;&#10;  expect(firstRepeat.findElement(by.model(&#39;contact.value&#39;)).getAttribute(&#39;value&#39;))&#10;      .toBe(&#39;408 555 1212&#39;);&#10;  expect(secondRepeat.findElement(by.model(&#39;contact.value&#39;)).getAttribute(&#39;value&#39;))&#10;      .toBe(&#39;john.smith@example.org&#39;);&#10;&#10;  firstRepeat.findElement(by.linkText(&#39;clear&#39;)).click();&#10;&#10;  expect(firstRepeat.findElement(by.model(&#39;contact.value&#39;)).getAttribute(&#39;value&#39;))&#10;      .toBe(&#39;&#39;);&#10;&#10;  container.findElement(by.linkText(&#39;add&#39;)).click();&#10;&#10;  expect(container.findElement(by.repeater(&#39;contact in settings.contacts&#39;).row(2))&#10;      .findElement(by.model(&#39;contact.value&#39;))&#10;      .getAttribute(&#39;value&#39;))&#10;      .toBe(&#39;yourname@example.org&#39;);&#10;});</code></pre>  
+  </div>
 
-   SettingsController1.prototype.addContact = function() {
-     this.contacts.push({type: &#39;email&#39;, value: &#39;yourname@example.org&#39;});
-   };
 
-   SettingsController1.prototype.removeContact = function(contactToRemove) {
-    var index = this.contacts.indexOf(contactToRemove);
-     this.contacts.splice(index, 1);
-   };
-
-   SettingsController1.prototype.clearContact = function(contact) {
-     contact.type = &#39;phone&#39;;
-     contact.value = &#39;&#39;;
-   };
- &lt;/script&gt;
- &lt;div id=&quot;ctrl-as-exmpl&quot; ng-controller=&quot;SettingsController1 as settings&quot;&gt;
-   Name: &lt;input type=&quot;text&quot; ng-model=&quot;settings.name&quot;/&gt;
-   [ &lt;a href=&quot;&quot; ng-click=&quot;settings.greet()&quot;&gt;greet&lt;/a&gt; ]&lt;br/&gt;
-   Contact:
-   &lt;ul&gt;
-     &lt;li ng-repeat=&quot;contact in settings.contacts&quot;&gt;
-       &lt;select ng-model=&quot;contact.type&quot;&gt;
-          &lt;option&gt;phone&lt;/option&gt;
-          &lt;option&gt;email&lt;/option&gt;
-       &lt;/select&gt;
-       &lt;input type=&quot;text&quot; ng-model=&quot;contact.value&quot;/&gt;
-       [ &lt;a href=&quot;&quot; ng-click=&quot;settings.clearContact(contact)&quot;&gt;clear&lt;/a&gt;
-       | &lt;a href=&quot;&quot; ng-click=&quot;settings.removeContact(contact)&quot;&gt;X&lt;/a&gt; ]
-     &lt;/li&gt;
-     &lt;li&gt;[ &lt;a href=&quot;&quot; ng-click=&quot;settings.addContact()&quot;&gt;add&lt;/a&gt; ]&lt;/li&gt;
-  &lt;/ul&gt;
- &lt;/div&gt;</code></pre>
-
+  <iframe class="runnable-example-frame" src="examples/example-example20/index.html" name="example-example20"></iframe>
 </div>
 
-<p></div></p>
-<div class="runnable-example-file" name="protractor.js" type="protractor" language="js">
 
 
+    
 
-<div>
-<pre><code class="lang-js">  it(&#39;should check controller as&#39;, function() {
-    var container = element(by.id(&#39;ctrl-as-exmpl&#39;));
 
-    expect(container.findElement(by.model(&#39;settings.name&#39;))
-        .getAttribute(&#39;value&#39;)).toBe(&#39;John Smith&#39;);
+<div class="runnable-example"
+    path="examples/example-example21">
 
-    var firstRepeat =
-        container.findElement(by.repeater(&#39;contact in settings.contacts&#39;).row(0));
-    var secondRepeat =
-        container.findElement(by.repeater(&#39;contact in settings.contacts&#39;).row(1));
+ 
+  <div class="runnable-example-file" 
+    name="index.html"
+    language="html"
+    type="html">
+    <pre><code>&lt;script&gt;&#10;  function SettingsController2($scope) {&#10;    $scope.name = &quot;John Smith&quot;;&#10;    $scope.contacts = [&#10;      {type:&#39;phone&#39;, value:&#39;408 555 1212&#39;},&#10;      {type:&#39;email&#39;, value:&#39;john.smith@example.org&#39;} ];&#10;&#10;    $scope.greet = function() {&#10;     alert(this.name);&#10;    };&#10;&#10;    $scope.addContact = function() {&#10;     this.contacts.push({type:&#39;email&#39;, value:&#39;yourname@example.org&#39;});&#10;    };&#10;&#10;    $scope.removeContact = function(contactToRemove) {&#10;     var index = this.contacts.indexOf(contactToRemove);&#10;     this.contacts.splice(index, 1);&#10;    };&#10;&#10;    $scope.clearContact = function(contact) {&#10;     contact.type = &#39;phone&#39;;&#10;     contact.value = &#39;&#39;;&#10;    };&#10;  }&#10;&lt;/script&gt;&#10;&lt;div id=&quot;ctrl-exmpl&quot; ng-controller=&quot;SettingsController2&quot;&gt;&#10;  Name: &lt;input type=&quot;text&quot; ng-model=&quot;name&quot;/&gt;&#10;  [ &lt;a href=&quot;&quot; ng-click=&quot;greet()&quot;&gt;greet&lt;/a&gt; ]&lt;br/&gt;&#10;  Contact:&#10;  &lt;ul&gt;&#10;    &lt;li ng-repeat=&quot;contact in contacts&quot;&gt;&#10;      &lt;select ng-model=&quot;contact.type&quot;&gt;&#10;         &lt;option&gt;phone&lt;/option&gt;&#10;         &lt;option&gt;email&lt;/option&gt;&#10;      &lt;/select&gt;&#10;      &lt;input type=&quot;text&quot; ng-model=&quot;contact.value&quot;/&gt;&#10;      [ &lt;a href=&quot;&quot; ng-click=&quot;clearContact(contact)&quot;&gt;clear&lt;/a&gt;&#10;      | &lt;a href=&quot;&quot; ng-click=&quot;removeContact(contact)&quot;&gt;X&lt;/a&gt; ]&#10;    &lt;/li&gt;&#10;    &lt;li&gt;[ &lt;a href=&quot;&quot; ng-click=&quot;addContact()&quot;&gt;add&lt;/a&gt; ]&lt;/li&gt;&#10; &lt;/ul&gt;&#10;&lt;/div&gt;</code></pre>  
+  </div>
 
-    expect(firstRepeat.findElement(by.model(&#39;contact.value&#39;)).getAttribute(&#39;value&#39;))
-        .toBe(&#39;408 555 1212&#39;);
-    expect(secondRepeat.findElement(by.model(&#39;contact.value&#39;)).getAttribute(&#39;value&#39;))
-        .toBe(&#39;john.smith@example.org&#39;);
+  <div class="runnable-example-file" 
+    name="protractor.js"
+    type="protractor"
+    language="js">
+    <pre><code>it(&#39;should check controller&#39;, function() {&#10;  var container = element(by.id(&#39;ctrl-exmpl&#39;));&#10;&#10;  expect(container.findElement(by.model(&#39;name&#39;))&#10;      .getAttribute(&#39;value&#39;)).toBe(&#39;John Smith&#39;);&#10;&#10;  var firstRepeat =&#10;      container.findElement(by.repeater(&#39;contact in contacts&#39;).row(0));&#10;  var secondRepeat =&#10;      container.findElement(by.repeater(&#39;contact in contacts&#39;).row(1));&#10;&#10;  expect(firstRepeat.findElement(by.model(&#39;contact.value&#39;)).getAttribute(&#39;value&#39;))&#10;      .toBe(&#39;408 555 1212&#39;);&#10;  expect(secondRepeat.findElement(by.model(&#39;contact.value&#39;)).getAttribute(&#39;value&#39;))&#10;      .toBe(&#39;john.smith@example.org&#39;);&#10;&#10;  firstRepeat.findElement(by.linkText(&#39;clear&#39;)).click();&#10;&#10;  expect(firstRepeat.findElement(by.model(&#39;contact.value&#39;)).getAttribute(&#39;value&#39;))&#10;      .toBe(&#39;&#39;);&#10;&#10;  container.findElement(by.linkText(&#39;add&#39;)).click();&#10;&#10;  expect(container.findElement(by.repeater(&#39;contact in contacts&#39;).row(2))&#10;      .findElement(by.model(&#39;contact.value&#39;))&#10;      .getAttribute(&#39;value&#39;))&#10;      .toBe(&#39;yourname@example.org&#39;);&#10;});</code></pre>  
+  </div>
 
-    firstRepeat.findElement(by.linkText(&#39;clear&#39;)).click();
 
-    expect(firstRepeat.findElement(by.model(&#39;contact.value&#39;)).getAttribute(&#39;value&#39;))
-        .toBe(&#39;&#39;);
-
-    container.findElement(by.linkText(&#39;add&#39;)).click();
-
-    expect(container.findElement(by.repeater(&#39;contact in settings.contacts&#39;).row(2))
-        .findElement(by.model(&#39;contact.value&#39;))
-        .getAttribute(&#39;value&#39;))
-        .toBe(&#39;yourname@example.org&#39;);
-  });</code></pre>
-
+  <iframe class="runnable-example-frame" src="examples/example-example21/index.html" name="example-example21"></iframe>
 </div>
 
-<p></div></p>
-<p><iframe class="runnable-example-frame" src="examples/example-example20/index.html" name="example-example20"></iframe>
-</div></p>
-<div class="runnable-example" id="example-example21" outputFolder="examples/example-example21">
-<div class="runnable-example-file" name="index.html" language="html" type="html">
 
-
-
-<div>
-<pre><code class="lang-html"> &lt;script&gt;
-   function SettingsController2($scope) {
-     $scope.name = &quot;John Smith&quot;;
-     $scope.contacts = [
-       {type:&#39;phone&#39;, value:&#39;408 555 1212&#39;},
-       {type:&#39;email&#39;, value:&#39;john.smith@example.org&#39;} ];
-
-     $scope.greet = function() {
-      alert(this.name);
-     };
-
-     $scope.addContact = function() {
-      this.contacts.push({type:&#39;email&#39;, value:&#39;yourname@example.org&#39;});
-     };
-
-     $scope.removeContact = function(contactToRemove) {
-      var index = this.contacts.indexOf(contactToRemove);
-      this.contacts.splice(index, 1);
-     };
-
-     $scope.clearContact = function(contact) {
-      contact.type = &#39;phone&#39;;
-      contact.value = &#39;&#39;;
-     };
-   }
- &lt;/script&gt;
- &lt;div id=&quot;ctrl-exmpl&quot; ng-controller=&quot;SettingsController2&quot;&gt;
-   Name: &lt;input type=&quot;text&quot; ng-model=&quot;name&quot;/&gt;
-   [ &lt;a href=&quot;&quot; ng-click=&quot;greet()&quot;&gt;greet&lt;/a&gt; ]&lt;br/&gt;
-   Contact:
-   &lt;ul&gt;
-     &lt;li ng-repeat=&quot;contact in contacts&quot;&gt;
-       &lt;select ng-model=&quot;contact.type&quot;&gt;
-          &lt;option&gt;phone&lt;/option&gt;
-          &lt;option&gt;email&lt;/option&gt;
-       &lt;/select&gt;
-       &lt;input type=&quot;text&quot; ng-model=&quot;contact.value&quot;/&gt;
-       [ &lt;a href=&quot;&quot; ng-click=&quot;clearContact(contact)&quot;&gt;clear&lt;/a&gt;
-       | &lt;a href=&quot;&quot; ng-click=&quot;removeContact(contact)&quot;&gt;X&lt;/a&gt; ]
-     &lt;/li&gt;
-     &lt;li&gt;[ &lt;a href=&quot;&quot; ng-click=&quot;addContact()&quot;&gt;add&lt;/a&gt; ]&lt;/li&gt;
-  &lt;/ul&gt;
- &lt;/div&gt;</code></pre>
-
-</div>
-
-<p></div></p>
-<div class="runnable-example-file" name="protractor.js" type="protractor" language="js">
-
-
-
-<div>
-<pre><code class="lang-js">  it(&#39;should check controller&#39;, function() {
-    var container = element(by.id(&#39;ctrl-exmpl&#39;));
-
-    expect(container.findElement(by.model(&#39;name&#39;))
-        .getAttribute(&#39;value&#39;)).toBe(&#39;John Smith&#39;);
-
-    var firstRepeat =
-        container.findElement(by.repeater(&#39;contact in contacts&#39;).row(0));
-    var secondRepeat =
-        container.findElement(by.repeater(&#39;contact in contacts&#39;).row(1));
-
-    expect(firstRepeat.findElement(by.model(&#39;contact.value&#39;)).getAttribute(&#39;value&#39;))
-        .toBe(&#39;408 555 1212&#39;);
-    expect(secondRepeat.findElement(by.model(&#39;contact.value&#39;)).getAttribute(&#39;value&#39;))
-        .toBe(&#39;john.smith@example.org&#39;);
-
-    firstRepeat.findElement(by.linkText(&#39;clear&#39;)).click();
-
-    expect(firstRepeat.findElement(by.model(&#39;contact.value&#39;)).getAttribute(&#39;value&#39;))
-        .toBe(&#39;&#39;);
-
-    container.findElement(by.linkText(&#39;add&#39;)).click();
-
-    expect(container.findElement(by.repeater(&#39;contact in contacts&#39;).row(2))
-        .findElement(by.model(&#39;contact.value&#39;))
-        .getAttribute(&#39;value&#39;))
-        .toBe(&#39;yourname@example.org&#39;);
-  });</code></pre>
-
-</div>
-
-<p></div></p>
-<p><iframe class="runnable-example-frame" src="examples/example-example21/index.html" name="example-example21"></iframe>
-</div></p>
+</p>
 
 </div>
 

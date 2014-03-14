@@ -1,9 +1,9 @@
-<a href='http://github.com/angular/angular.js/edit/master/src/ng/directive/ngClass.js' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+<a href='http://github.com/angular/angular.js/edit/master/src/ng/directive/ngClass.js' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this doc</a>
 
 
 
-<a href='http://github.com/angular/angular.js/tree/master/src/ng/directive/ngClass.js#L211' class='view-source pull-right'>
-  <i class="icon-zoom-in">&nbsp;</i>View Source
+<a href='http://github.com/angular/angular.js/tree/master/src/ng/directive/ngClass.js#L211' class='view-source pull-right btn btn-primary'>
+  <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
 
@@ -93,55 +93,40 @@ conjunction with <code>ngRepeat</code> and take effect only on odd (even) rows.<
 
 
   
-  <h2 id="example">Example</h2><div class="runnable-example" id="example-example17" outputFolder="examples/example-example17">
-<div class="runnable-example-file" name="index.html" language="html" type="html">
+  <h2 id="example">Example</h2><p>
 
 
+<div class="runnable-example"
+    path="examples/example-example17">
 
-<div>
-<pre><code class="lang-html">   &lt;ol ng-init=&quot;names=[&#39;John&#39;, &#39;Mary&#39;, &#39;Cate&#39;, &#39;Suz&#39;]&quot;&gt;
-     &lt;li ng-repeat=&quot;name in names&quot;&gt;
-      &lt;span ng-class-odd=&quot;&#39;odd&#39;&quot; ng-class-even=&quot;&#39;even&#39;&quot;&gt;
-        {{name}}
-      &lt;/span&gt;
-     &lt;/li&gt;
-   &lt;/ol&gt;</code></pre>
+ 
+  <div class="runnable-example-file" 
+    name="index.html"
+    language="html"
+    type="html">
+    <pre><code>&lt;ol ng-init=&quot;names=[&#39;John&#39;, &#39;Mary&#39;, &#39;Cate&#39;, &#39;Suz&#39;]&quot;&gt;&#10;  &lt;li ng-repeat=&quot;name in names&quot;&gt;&#10;   &lt;span ng-class-odd=&quot;&#39;odd&#39;&quot; ng-class-even=&quot;&#39;even&#39;&quot;&gt;&#10;     {{name}}&#10;   &lt;/span&gt;&#10;  &lt;/li&gt;&#10;&lt;/ol&gt;</code></pre>  
+  </div>
 
+  <div class="runnable-example-file" 
+    name="style.css"
+    language="css"
+    type="css">
+    <pre><code>.odd {&#10;  color: red;&#10;}&#10;.even {&#10;  color: blue;&#10;}</code></pre>  
+  </div>
+
+  <div class="runnable-example-file" 
+    name="protractor.js"
+    type="protractor"
+    language="js">
+    <pre><code>it(&#39;should check ng-class-odd and ng-class-even&#39;, function() {&#10;  expect(element(by.repeater(&#39;name in names&#39;).row(0).column(&#39;name&#39;)).getAttribute(&#39;class&#39;)).&#10;    toMatch(/odd/);&#10;  expect(element(by.repeater(&#39;name in names&#39;).row(1).column(&#39;name&#39;)).getAttribute(&#39;class&#39;)).&#10;    toMatch(/even/);&#10;});</code></pre>  
+  </div>
+
+
+  <iframe class="runnable-example-frame" src="examples/example-example17/index.html" name="example-example17"></iframe>
 </div>
 
-<p></div></p>
-<div class="runnable-example-file" name="style.css" language="css" type="css">
 
-
-
-<div>
-<pre><code class="lang-css">  .odd {
-    color: red;
-  }
-  .even {
-    color: blue;
-  }</code></pre>
-
-</div>
-
-<p></div></p>
-<div class="runnable-example-file" name="protractor.js" type="protractor" language="js">
-
-
-
-<div>
-<pre><code class="lang-js">  it(&#39;should check ng-class-odd and ng-class-even&#39;, function() {
-    expect(element(by.repeater(&#39;name in names&#39;).row(0).column(&#39;name&#39;)).getAttribute(&#39;class&#39;)).
-      toMatch(/odd/);
-    expect(element(by.repeater(&#39;name in names&#39;).row(1).column(&#39;name&#39;)).getAttribute(&#39;class&#39;)).
-      toMatch(/even/);
-  });</code></pre>
-
-</div>
-
-<p></div></p>
-<p><iframe class="runnable-example-frame" src="examples/example-example17/index.html" name="example-example17"></iframe>
-</div></p>
+</p>
 
 </div>
 

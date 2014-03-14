@@ -1,4 +1,4 @@
-<a href='http://github.com/angular/angular.js/edit/master/docs/content/guide/concepts.ngdoc' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+<a href='http://github.com/angular/angular.js/edit/master/docs/content/guide/concepts.ngdoc' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this doc</a>
 
 
 <p>There are some concepts within Angular that you should understand before creating your first application.
@@ -74,30 +74,26 @@ For a more in-depth explanation, have a look at the <a href="tutorial/">tutorial
 <h1 id="a-first-example-data-binding">A first example: Data binding</h1>
 <p>In the following example we will build a form to calculate the costs of an invoice in different currencies.</p>
 <p>Let&#39;s start with input fields for quantity and cost whose values are multiplied to produce the total of the invoice:</p>
-<div class="runnable-example" id="example-example74" outputFolder="examples/example-example74">
-<div class="runnable-example-file" name="index.html" language="html" type="html">
+<p>
 
 
+<div class="runnable-example"
+    path="examples/example-example74">
 
-<div>
-<pre><code class="lang-html">    &lt;div ng-init=&quot;qty=1;cost=2&quot;&gt;
-      &lt;b&gt;Invoice:&lt;/b&gt;
-      &lt;div&gt;
-        Quantity: &lt;input type=&quot;number&quot; ng-model=&quot;qty&quot; required &gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-        Costs: &lt;input type=&quot;number&quot; ng-model=&quot;cost&quot; required &gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-        &lt;b&gt;Total:&lt;/b&gt; {{qty * cost | currency}}
-      &lt;/div&gt;
-    &lt;/div&gt;</code></pre>
+ 
+  <div class="runnable-example-file" 
+    name="index.html"
+    language="html"
+    type="html">
+    <pre><code>&lt;div ng-init=&quot;qty=1;cost=2&quot;&gt;&#10;  &lt;b&gt;Invoice:&lt;/b&gt;&#10;  &lt;div&gt;&#10;    Quantity: &lt;input type=&quot;number&quot; ng-model=&quot;qty&quot; required &gt;&#10;  &lt;/div&gt;&#10;  &lt;div&gt;&#10;    Costs: &lt;input type=&quot;number&quot; ng-model=&quot;cost&quot; required &gt;&#10;  &lt;/div&gt;&#10;  &lt;div&gt;&#10;    &lt;b&gt;Total:&lt;/b&gt; {{qty * cost | currency}}&#10;  &lt;/div&gt;&#10;&lt;/div&gt;</code></pre>  
+  </div>
 
+
+  <iframe class="runnable-example-frame" src="examples/example-example74/index.html" name="example-example74"></iframe>
 </div>
 
-<p></div></p>
-<p><iframe class="runnable-example-frame" src="examples/example-example74/index.html" name="example-example74"></iframe>
-</div></p>
+
+</p>
 <p>Try out the Live Preview above, and then let&#39;s walk through the example and describe what&#39;s going on.</p>
 <p><img class="pull-right" style="padding-left: 3em; padding-bottom: 1em;" src="img/guide/concepts-databinding1.png"></p>
 <p>This looks like normal HTML, with some new markup. In Angular, a file like this is called a
@@ -141,68 +137,34 @@ The concept behind this is <a name="databinding">&quot;<a href="guide/databindin
 <h1 id="adding-ui-logic-controllers">Adding UI logic: Controllers</h1>
 <p>Let&#39;s add some more logic to the example that allows us to enter and calculate the costs in
 different currencies and also pay the invoice.</p>
-<div class="runnable-example" module="invoice1" id="example-example75" outputFolder="examples/example-example75">
-<div class="runnable-example-file" name="invoice1.js" language="js" type="js">
+<p>
 
 
+<div class="runnable-example"
+    path="examples/example-example75"
+    module="invoice1">
 
-<div>
-<pre><code class="lang-js">  angular.module(&#39;invoice1&#39;, [])
-    .controller(&#39;InvoiceController&#39;, function() {
-      this.qty = 1;
-      this.cost = 2;
-      this.inCurr = &#39;EUR&#39;;
-      this.currencies = [&#39;USD&#39;, &#39;EUR&#39;, &#39;CNY&#39;];
-      this.usdToForeignRates = {
-        USD: 1,
-        EUR: 0.74,
-        CNY: 6.09
-      };
+ 
+  <div class="runnable-example-file" 
+    name="invoice1.js"
+    language="js"
+    type="js">
+    <pre><code>angular.module(&#39;invoice1&#39;, [])&#10;  .controller(&#39;InvoiceController&#39;, function() {&#10;    this.qty = 1;&#10;    this.cost = 2;&#10;    this.inCurr = &#39;EUR&#39;;&#10;    this.currencies = [&#39;USD&#39;, &#39;EUR&#39;, &#39;CNY&#39;];&#10;    this.usdToForeignRates = {&#10;      USD: 1,&#10;      EUR: 0.74,&#10;      CNY: 6.09&#10;    };&#10;&#10;    this.total = function total(outCurr) {&#10;      return this.convertCurrency(this.qty * this.cost, this.inCurr, outCurr);&#10;    };&#10;    this.convertCurrency = function convertCurrency(amount, inCurr, outCurr) {&#10;      return amount * this.usdToForeignRates[outCurr] / this.usdToForeignRates[inCurr];&#10;    };&#10;    this.pay = function pay() {&#10;      window.alert(&quot;Thanks!&quot;);&#10;    };&#10;  });</code></pre>  
+  </div>
 
-      this.total = function total(outCurr) {
-        return this.convertCurrency(this.qty <em> this.cost, this.inCurr, outCurr);
-      };
-      this.convertCurrency = function convertCurrency(amount, inCurr, outCurr) {
-        return amount </em> this.usdToForeignRates[outCurr] / this.usdToForeignRates[inCurr];
-      };
-      this.pay = function pay() {
-        window.alert(&quot;Thanks!&quot;);
-      };
-    });</code></pre>
+  <div class="runnable-example-file" 
+    name="index.html"
+    language="html"
+    type="html">
+    <pre><code>&lt;div ng-controller=&quot;InvoiceController as invoice&quot;&gt;&#10;  &lt;b&gt;Invoice:&lt;/b&gt;&#10;  &lt;div&gt;&#10;    Quantity: &lt;input type=&quot;number&quot; ng-model=&quot;invoice.qty&quot; required &gt;&#10;  &lt;/div&gt;&#10;  &lt;div&gt;&#10;    Costs: &lt;input type=&quot;number&quot; ng-model=&quot;invoice.cost&quot; required &gt;&#10;    &lt;select ng-model=&quot;invoice.inCurr&quot;&gt;&#10;      &lt;option ng-repeat=&quot;c in invoice.currencies&quot;&gt;{{c}}&lt;/option&gt;&#10;    &lt;/select&gt;&#10;  &lt;/div&gt;&#10;  &lt;div&gt;&#10;    &lt;b&gt;Total:&lt;/b&gt;&#10;    &lt;span ng-repeat=&quot;c in invoice.currencies&quot;&gt;&#10;      {{invoice.total(c) | currency:c}}&#10;    &lt;/span&gt;&#10;    &lt;button class=&quot;btn&quot; ng-click=&quot;invoice.pay()&quot;&gt;Pay&lt;/button&gt;&#10;  &lt;/div&gt;&#10;&lt;/div&gt;</code></pre>  
+  </div>
 
+
+  <iframe class="runnable-example-frame" src="examples/example-example75/index.html" name="example-example75"></iframe>
 </div>
 
-<p></div></p>
-<div class="runnable-example-file" name="index.html" language="html" type="html">
 
-
-
-<div>
-<pre><code class="lang-html">    &lt;div ng-controller=&quot;InvoiceController as invoice&quot;&gt;
-      &lt;b&gt;Invoice:&lt;/b&gt;
-      &lt;div&gt;
-        Quantity: &lt;input type=&quot;number&quot; ng-model=&quot;invoice.qty&quot; required &gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-        Costs: &lt;input type=&quot;number&quot; ng-model=&quot;invoice.cost&quot; required &gt;
-        &lt;select ng-model=&quot;invoice.inCurr&quot;&gt;
-          &lt;option ng-repeat=&quot;c in invoice.currencies&quot;&gt;{{c}}&lt;/option&gt;
-        &lt;/select&gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-        &lt;b&gt;Total:&lt;/b&gt;
-        &lt;span ng-repeat=&quot;c in invoice.currencies&quot;&gt;
-          {{invoice.total(c) | currency:c}}
-        &lt;/span&gt;
-        &lt;button class=&quot;btn&quot; ng-click=&quot;invoice.pay()&quot;&gt;Pay&lt;/button&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;</code></pre>
-
-</div>
-
-<p></div></p>
-<p><iframe class="runnable-example-frame" src="examples/example-example75/index.html" name="example-example75"></iframe>
-</div></p>
+</p>
 <p>What changed?</p>
 <p>First, there is a new JavaScript file that contains a so called <a name="controller">&quot;<a href="guide/controller">controller</a>&quot;</a>.
 More exactly, the file contains a constructor function that creates the actual controller instance.
@@ -233,86 +195,41 @@ is a good practice to move view independent logic from the controller into a so 
 of the application as well. Later on, we could also change that service to load the exchange rates
 from the web, e.g. by calling the Yahoo Finance API, without changing the controller.</p>
 <p>Let&#39;s refactor our example and move the currency conversion into a service in another file:</p>
-<div class="runnable-example" module="invoice2" id="example-example76" outputFolder="examples/example-example76">
-<div class="runnable-example-file" name="finance2.js" language="js" type="js">
+<p>
 
 
+<div class="runnable-example"
+    path="examples/example-example76"
+    module="invoice2">
 
-<div>
-<pre><code class="lang-js">  angular.module(&#39;finance2&#39;, [])
-    .factory(&#39;currencyConverter&#39;, function() {
-      var currencies = [&#39;USD&#39;, &#39;EUR&#39;, &#39;CNY&#39;];
-      var usdToForeignRates = {
-        USD: 1,
-        EUR: 0.74,
-        CNY: 6.09
-      };
-      var convert = function (amount, inCurr, outCurr) {
-        return amount * usdToForeignRates[outCurr] / usdToForeignRates[inCurr];
-      };
+ 
+  <div class="runnable-example-file" 
+    name="finance2.js"
+    language="js"
+    type="js">
+    <pre><code>angular.module(&#39;finance2&#39;, [])&#10;  .factory(&#39;currencyConverter&#39;, function() {&#10;    var currencies = [&#39;USD&#39;, &#39;EUR&#39;, &#39;CNY&#39;];&#10;    var usdToForeignRates = {&#10;      USD: 1,&#10;      EUR: 0.74,&#10;      CNY: 6.09&#10;    };&#10;    var convert = function (amount, inCurr, outCurr) {&#10;      return amount * usdToForeignRates[outCurr] / usdToForeignRates[inCurr];&#10;    };&#10;&#10;    return {&#10;      currencies: currencies,&#10;      convert: convert&#10;    };&#10;  });</code></pre>  
+  </div>
 
-      return {
-        currencies: currencies,
-        convert: convert
-      };
-    });</code></pre>
+  <div class="runnable-example-file" 
+    name="invoice2.js"
+    language="js"
+    type="js">
+    <pre><code>angular.module(&#39;invoice2&#39;, [&#39;finance2&#39;])&#10;  .controller(&#39;InvoiceController&#39;, [&#39;currencyConverter&#39;, function(currencyConverter) {&#10;    this.qty = 1;&#10;    this.cost = 2;&#10;    this.inCurr = &#39;EUR&#39;;&#10;    this.currencies = currencyConverter.currencies;&#10;&#10;    this.total = function total(outCurr) {&#10;      return currencyConverter.convert(this.qty * this.cost, this.inCurr, outCurr);&#10;    };&#10;    this.pay = function pay() {&#10;      window.alert(&quot;Thanks!&quot;);&#10;    };&#10;  }]);</code></pre>  
+  </div>
 
+  <div class="runnable-example-file" 
+    name="index.html"
+    language="html"
+    type="html">
+    <pre><code>&lt;div ng-controller=&quot;InvoiceController as invoice&quot;&gt;&#10;  &lt;b&gt;Invoice:&lt;/b&gt;&#10;  &lt;div&gt;&#10;    Quantity: &lt;input type=&quot;number&quot; ng-model=&quot;invoice.qty&quot; required &gt;&#10;  &lt;/div&gt;&#10;  &lt;div&gt;&#10;    Costs: &lt;input type=&quot;number&quot; ng-model=&quot;invoice.cost&quot; required &gt;&#10;    &lt;select ng-model=&quot;invoice.inCurr&quot;&gt;&#10;      &lt;option ng-repeat=&quot;c in invoice.currencies&quot;&gt;{{c}}&lt;/option&gt;&#10;    &lt;/select&gt;&#10;  &lt;/div&gt;&#10;  &lt;div&gt;&#10;    &lt;b&gt;Total:&lt;/b&gt;&#10;    &lt;span ng-repeat=&quot;c in invoice.currencies&quot;&gt;&#10;      {{invoice.total(c) | currency:c}}&#10;    &lt;/span&gt;&#10;    &lt;button class=&quot;btn&quot; ng-click=&quot;invoice.pay()&quot;&gt;Pay&lt;/button&gt;&#10;  &lt;/div&gt;&#10;&lt;/div&gt;</code></pre>  
+  </div>
+
+
+  <iframe class="runnable-example-frame" src="examples/example-example76/index.html" name="example-example76"></iframe>
 </div>
 
-<p></div></p>
-<div class="runnable-example-file" name="invoice2.js" language="js" type="js">
 
-
-
-<div>
-<pre><code class="lang-js">  angular.module(&#39;invoice2&#39;, [&#39;finance2&#39;])
-    .controller(&#39;InvoiceController&#39;, [&#39;currencyConverter&#39;, function(currencyConverter) {
-      this.qty = 1;
-      this.cost = 2;
-      this.inCurr = &#39;EUR&#39;;
-      this.currencies = currencyConverter.currencies;
-
-      this.total = function total(outCurr) {
-        return currencyConverter.convert(this.qty * this.cost, this.inCurr, outCurr);
-      };
-      this.pay = function pay() {
-        window.alert(&quot;Thanks!&quot;);
-      };
-    }]);</code></pre>
-
-</div>
-
-<p></div></p>
-<div class="runnable-example-file" name="index.html" language="html" type="html">
-
-
-
-<div>
-<pre><code class="lang-html">    &lt;div ng-controller=&quot;InvoiceController as invoice&quot;&gt;
-      &lt;b&gt;Invoice:&lt;/b&gt;
-      &lt;div&gt;
-        Quantity: &lt;input type=&quot;number&quot; ng-model=&quot;invoice.qty&quot; required &gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-        Costs: &lt;input type=&quot;number&quot; ng-model=&quot;invoice.cost&quot; required &gt;
-        &lt;select ng-model=&quot;invoice.inCurr&quot;&gt;
-          &lt;option ng-repeat=&quot;c in invoice.currencies&quot;&gt;{{c}}&lt;/option&gt;
-        &lt;/select&gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-        &lt;b&gt;Total:&lt;/b&gt;
-        &lt;span ng-repeat=&quot;c in invoice.currencies&quot;&gt;
-          {{invoice.total(c) | currency:c}}
-        &lt;/span&gt;
-        &lt;button class=&quot;btn&quot; ng-click=&quot;invoice.pay()&quot;&gt;Pay&lt;/button&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;</code></pre>
-
-</div>
-
-<p></div></p>
-<p><iframe class="runnable-example-frame" src="examples/example-example76/index.html" name="example-example76"></iframe>
-</div></p>
+</p>
 <p><img class="pull-right" style="padding-left: 3em; padding-bottom: 1em;" src="img/guide/concepts-module-service.png"></p>
 <p>What changed?
 We moved the <code>convertCurrency</code> function and the definition of the existing currencies
@@ -355,103 +272,41 @@ to something shorter like <code>a</code>.</p>
 <h1 id="accessing-the-backend">Accessing the backend</h1>
 <p>Let&#39;s finish our example by fetching the exchange rates from the Yahoo Finance API.
 The following example shows how this is done with Angular:</p>
-<div class="runnable-example" module="invoice3" id="example-example77" outputFolder="examples/example-example77">
-<div class="runnable-example-file" name="invoice3.js" language="js" type="js">
+<p>
 
 
+<div class="runnable-example"
+    path="examples/example-example77"
+    module="invoice3">
 
-<div>
-<pre><code class="lang-js">  angular.module(&#39;invoice3&#39;, [&#39;finance3&#39;])
-    .controller(&#39;InvoiceController&#39;, [&#39;currencyConverter&#39;, function(currencyConverter) {
-      this.qty = 1;
-      this.cost = 2;
-      this.inCurr = &#39;EUR&#39;;
-      this.currencies = currencyConverter.currencies;
+ 
+  <div class="runnable-example-file" 
+    name="invoice3.js"
+    language="js"
+    type="js">
+    <pre><code>angular.module(&#39;invoice3&#39;, [&#39;finance3&#39;])&#10;  .controller(&#39;InvoiceController&#39;, [&#39;currencyConverter&#39;, function(currencyConverter) {&#10;    this.qty = 1;&#10;    this.cost = 2;&#10;    this.inCurr = &#39;EUR&#39;;&#10;    this.currencies = currencyConverter.currencies;&#10;&#10;    this.total = function total(outCurr) {&#10;      return currencyConverter.convert(this.qty * this.cost, this.inCurr, outCurr);&#10;    };&#10;    this.pay = function pay() {&#10;      window.alert(&quot;Thanks!&quot;);&#10;    };&#10;  }]);</code></pre>  
+  </div>
 
-      this.total = function total(outCurr) {
-        return currencyConverter.convert(this.qty * this.cost, this.inCurr, outCurr);
-      };
-      this.pay = function pay() {
-        window.alert(&quot;Thanks!&quot;);
-      };
-    }]);</code></pre>
+  <div class="runnable-example-file" 
+    name="finance3.js"
+    language="js"
+    type="js">
+    <pre><code>angular.module(&#39;finance3&#39;, [])&#10;  .factory(&#39;currencyConverter&#39;, [&#39;$http&#39;, function($http) {&#10;    var YAHOO_FINANCE_URL_PATTERN =&#10;          &#39;http://query.yahooapis.com/v1/public/yql?q=select * from &#39;+&#10;          &#39;yahoo.finance.xchange where pair in (&quot;PAIRS&quot;)&amp;format=json&amp;&#39;+&#10;          &#39;env=store://datatables.org/alltableswithkeys&amp;callback=JSON_CALLBACK&#39;;&#10;    var currencies = [&#39;USD&#39;, &#39;EUR&#39;, &#39;CNY&#39;];&#10;    var usdToForeignRates = {};&#10;&#10;    var convert = function (amount, inCurr, outCurr) {&#10;      return amount * usdToForeignRates[outCurr] / usdToForeignRates[inCurr];&#10;    };&#10;&#10;    var refresh = function() {&#10;      var url = YAHOO_FINANCE_URL_PATTERN.&#10;                 replace(&#39;PAIRS&#39;, &#39;USD&#39; + currencies.join(&#39;&quot;,&quot;USD&#39;));&#10;      return $http.jsonp(url).success(function(data) {&#10;        var newUsdToForeignRates = {};&#10;        angular.forEach(data.query.results.rate, function(rate) {&#10;          var currency = rate.id.substring(3,6);&#10;          newUsdToForeignRates[currency] = window.parseFloat(rate.Rate);&#10;        });&#10;        usdToForeignRates = newUsdToForeignRates;&#10;      });&#10;    };&#10;&#10;    refresh();&#10;&#10;    return {&#10;      currencies: currencies,&#10;      convert: convert,&#10;      refresh: refresh&#10;    };&#10;  }]);</code></pre>  
+  </div>
 
+  <div class="runnable-example-file" 
+    name="index.html"
+    language="html"
+    type="html">
+    <pre><code>&lt;div ng-controller=&quot;InvoiceController as invoice&quot;&gt;&#10;  &lt;b&gt;Invoice:&lt;/b&gt;&#10;  &lt;div&gt;&#10;    Quantity: &lt;input type=&quot;number&quot; ng-model=&quot;invoice.qty&quot; required &gt;&#10;  &lt;/div&gt;&#10;  &lt;div&gt;&#10;    Costs: &lt;input type=&quot;number&quot; ng-model=&quot;invoice.cost&quot; required &gt;&#10;    &lt;select ng-model=&quot;invoice.inCurr&quot;&gt;&#10;      &lt;option ng-repeat=&quot;c in invoice.currencies&quot;&gt;{{c}}&lt;/option&gt;&#10;    &lt;/select&gt;&#10;  &lt;/div&gt;&#10;  &lt;div&gt;&#10;    &lt;b&gt;Total:&lt;/b&gt;&#10;    &lt;span ng-repeat=&quot;c in invoice.currencies&quot;&gt;&#10;      {{invoice.total(c) | currency:c}}&#10;    &lt;/span&gt;&#10;    &lt;button class=&quot;btn&quot; ng-click=&quot;invoice.pay()&quot;&gt;Pay&lt;/button&gt;&#10;  &lt;/div&gt;&#10;&lt;/div&gt;</code></pre>  
+  </div>
+
+
+  <iframe class="runnable-example-frame" src="examples/example-example77/index.html" name="example-example77"></iframe>
 </div>
 
-<p></div></p>
-<div class="runnable-example-file" name="finance3.js" language="js" type="js">
 
-
-
-<div>
-<pre><code class="lang-js">  angular.module(&#39;finance3&#39;, [])
-    .factory(&#39;currencyConverter&#39;, [&#39;$http&#39;, function($http) {
-      var YAHOO_FINANCE_URL_PATTERN =
-            &#39;<a href="http://query.yahooapis.com/v1/public/yql?q=select">http://query.yahooapis.com/v1/public/yql?q=select</a> <em> from &#39;+
-            &#39;yahoo.finance.xchange where pair in (&quot;PAIRS&quot;)&amp;format=json&amp;&#39;+
-            &#39;env=store://datatables.org/alltableswithkeys&amp;callback=JSON_CALLBACK&#39;;
-      var currencies = [&#39;USD&#39;, &#39;EUR&#39;, &#39;CNY&#39;];
-      var usdToForeignRates = {};
-
-      var convert = function (amount, inCurr, outCurr) {
-        return amount </em> usdToForeignRates[outCurr] / usdToForeignRates[inCurr];
-      };
-
-      var refresh = function() {
-        var url = YAHOO_FINANCE_URL_PATTERN.
-                   replace(&#39;PAIRS&#39;, &#39;USD&#39; + currencies.join(&#39;&quot;,&quot;USD&#39;));
-        return $http.jsonp(url).success(function(data) {
-          var newUsdToForeignRates = {};
-          angular.forEach(data.query.results.rate, function(rate) {
-            var currency = rate.id.substring(3,6);
-            newUsdToForeignRates[currency] = window.parseFloat(rate.Rate);
-          });
-          usdToForeignRates = newUsdToForeignRates;
-        });
-      };
-
-      refresh();
-
-      return {
-        currencies: currencies,
-        convert: convert,
-        refresh: refresh
-      };
-    }]);</code></pre>
-
-</div>
-
-<p></div></p>
-<div class="runnable-example-file" name="index.html" language="html" type="html">
-
-
-
-<div>
-<pre><code class="lang-html">    &lt;div ng-controller=&quot;InvoiceController as invoice&quot;&gt;
-      &lt;b&gt;Invoice:&lt;/b&gt;
-      &lt;div&gt;
-        Quantity: &lt;input type=&quot;number&quot; ng-model=&quot;invoice.qty&quot; required &gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-        Costs: &lt;input type=&quot;number&quot; ng-model=&quot;invoice.cost&quot; required &gt;
-        &lt;select ng-model=&quot;invoice.inCurr&quot;&gt;
-          &lt;option ng-repeat=&quot;c in invoice.currencies&quot;&gt;{{c}}&lt;/option&gt;
-        &lt;/select&gt;
-      &lt;/div&gt;
-      &lt;div&gt;
-        &lt;b&gt;Total:&lt;/b&gt;
-        &lt;span ng-repeat=&quot;c in invoice.currencies&quot;&gt;
-          {{invoice.total(c) | currency:c}}
-        &lt;/span&gt;
-        &lt;button class=&quot;btn&quot; ng-click=&quot;invoice.pay()&quot;&gt;Pay&lt;/button&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;</code></pre>
-
-</div>
-
-<p></div></p>
-<p><iframe class="runnable-example-frame" src="examples/example-example77/index.html" name="example-example77"></iframe>
-</div></p>
+</p>
 <p>What changed?
 Our <code>currencyConverter</code> service of the <code>finance</code> module now uses the
 <a href="api/ng/service/$http">$http</a> service, a builtin service provided by Angular

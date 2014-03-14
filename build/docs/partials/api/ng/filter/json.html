@@ -1,9 +1,9 @@
-<a href='http://github.com/angular/angular.js/edit/master/src/ng/filter/filters.js' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+<a href='http://github.com/angular/angular.js/edit/master/src/ng/filter/filters.js' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this doc</a>
 
 
 
-<a href='http://github.com/angular/angular.js/tree/master/src/ng/filter/filters.js#L429' class='view-source pull-right'>
-  <i class="icon-zoom-in">&nbsp;</i>View Source
+<a href='http://github.com/angular/angular.js/tree/master/src/ng/filter/filters.js#L459' class='view-source pull-right btn btn-primary'>
+  <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
 
@@ -82,38 +82,40 @@
   <tr>
     <td><a href="" class="label type-hint type-hint-string">string</a></td>
     <td><p>JSON string.</p>
-<p>@example:</p>
-<div class="runnable-example" id="example-example54" outputFolder="examples/example-example54">
-<div class="runnable-example-file" name="index.html" language="html" type="html">
-
-
-
-<div>
-<pre><code class="lang-html">  &lt;pre&gt;{{ {&#39;name&#39;:&#39;value&#39;} | json }}&lt;/pre&gt;</code></pre>
-
-</div>
-
-<p></div></p>
-<div class="runnable-example-file" name="protractor.js" type="protractor" language="js">
-
-
-
-<div>
-<pre><code class="lang-js">  it(&#39;should jsonify filtered objects&#39;, function() {
-    expect(element(by.binding(&quot;{&#39;name&#39;:&#39;value&#39;}&quot;)).getText()).toMatch(/{\n  &quot;name&quot;: ?&quot;value&quot;\n}/);
-  });</code></pre>
-
-</div>
-
-<p></div></p>
-<p><iframe class="runnable-example-frame" src="examples/example-example54/index.html" name="example-example54"></iframe>
-</div></p>
 </td>
   </tr>
 </table>
 
 
   
+  <h2 id="example">Example</h2><p>
+
+
+<div class="runnable-example"
+    path="examples/example-example54">
+
+ 
+  <div class="runnable-example-file" 
+    name="index.html"
+    language="html"
+    type="html">
+    <pre><code>&lt;pre&gt;{{ {&#39;name&#39;:&#39;value&#39;} | json }}&lt;/pre&gt;</code></pre>  
+  </div>
+
+  <div class="runnable-example-file" 
+    name="protractor.js"
+    type="protractor"
+    language="js">
+    <pre><code>it(&#39;should jsonify filtered objects&#39;, function() {&#10;  expect(element(by.binding(&quot;{&#39;name&#39;:&#39;value&#39;}&quot;)).getText()).toMatch(/\{\n  &quot;name&quot;: ?&quot;value&quot;\n}/);&#10;});</code></pre>  
+  </div>
+
+
+  <iframe class="runnable-example-frame" src="examples/example-example54/index.html" name="example-example54"></iframe>
+</div>
+
+
+</p>
+
 </div>
 
 

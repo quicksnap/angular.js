@@ -1,4 +1,4 @@
-<a href='http://github.com/angular/angular.js/edit/master/src/ngTouch/touch.js' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+<a href='http://github.com/angular/angular.js/edit/master/src/ngTouch/touch.js' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this doc</a>
 
 
 <h1>
@@ -54,19 +54,28 @@ The implementation is based on jQuery Mobile touch event handling
       
       <tr>
         <td><a href="api/ngTouch/directive/ngClick">ngClick</a></td>
-        <td><p>A more powerful replacement for the default ngClick designed to be used on touchscreen</p>
+        <td><p>A more powerful replacement for the default ngClick designed to be used on touchscreen
+devices. Most mobile browsers wait about 300ms after a tap-and-release before sending
+the click event. This version handles them immediately, and then prevents the
+following click event from propagating.</p>
 </td>
       </tr>
       
       <tr>
         <td><a href="api/ngTouch/directive/ngSwipeLeft">ngSwipeLeft</a></td>
-        <td><p>Specify custom behavior when an element is swiped to the left on a touchscreen device.</p>
+        <td><p>Specify custom behavior when an element is swiped to the left on a touchscreen device.
+A leftward swipe is a quick, right-to-left slide of the finger.
+Though ngSwipeLeft is designed for touch-based devices, it will work with a mouse click and drag
+too.</p>
 </td>
       </tr>
       
       <tr>
         <td><a href="api/ngTouch/directive/ngSwipeRight">ngSwipeRight</a></td>
-        <td><p>Specify custom behavior when an element is swiped to the right on a touchscreen device.</p>
+        <td><p>Specify custom behavior when an element is swiped to the right on a touchscreen device.
+A rightward swipe is a quick, left-to-right slide of the finger.
+Though ngSwipeRight is designed for touch-based devices, it will work with a mouse click and drag
+too.</p>
 </td>
       </tr>
       
@@ -83,7 +92,8 @@ The implementation is based on jQuery Mobile touch event handling
       
       <tr>
         <td><a href="api/ngTouch/service/$swipe">$swipe</a></td>
-        <td><p>The <code>$swipe</code> service is a service that abstracts the messier details of hold-and-drag swipe</p>
+        <td><p>The <code>$swipe</code> service is a service that abstracts the messier details of hold-and-drag swipe
+behavior, to make implementing swipe-related directives more convenient.</p>
 </td>
       </tr>
       

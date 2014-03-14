@@ -1,4 +1,4 @@
-<a href='http://github.com/angular/angular.js/edit/master/src/ngAnimate/animate.js' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+<a href='http://github.com/angular/angular.js/edit/master/src/ngAnimate/animate.js' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this doc</a>
 
 
 <h1>
@@ -269,7 +269,9 @@ or transition code that is defined via a stylesheet).</p>
       
       <tr>
         <td><a href="api/ngAnimate/provider/$animateProvider">$animateProvider</a></td>
-        <td><p>The <code>$animateProvider</code> allows developers to register JavaScript animation event handlers directly inside of a module.</p>
+        <td><p>The <code>$animateProvider</code> allows developers to register JavaScript animation event handlers directly inside of a module.
+When an animation is triggered, the $animate service will query the $animate service to find any animations that match
+the provided name value.</p>
 </td>
       </tr>
       
@@ -286,7 +288,10 @@ or transition code that is defined via a stylesheet).</p>
       
       <tr>
         <td><a href="api/ngAnimate/service/$animate">$animate</a></td>
-        <td><p>The <code>$animate</code> service provides animation detection support while performing DOM operations (enter, leave and move) as well as during addClass and removeClass operations.</p>
+        <td><p>The <code>$animate</code> service provides animation detection support while performing DOM operations (enter, leave and move) as well as during addClass and removeClass operations.
+When any of these operations are run, the $animate service
+will examine any JavaScript-defined animations (which are defined by using the $animateProvider provider object)
+as well as any CSS-defined animations against the CSS classes present on the element once the DOM operation is run.</p>
 </td>
       </tr>
       

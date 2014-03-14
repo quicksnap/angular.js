@@ -1,9 +1,9 @@
-<a href='http://github.com/angular/angular.js/edit/master/src/ng/directive/ngBind.js' class='improve-docs'><i class="icon-edit">&nbsp;</i>Improve this doc</a>
+<a href='http://github.com/angular/angular.js/edit/master/src/ng/directive/ngBind.js' class='improve-docs btn btn-primary'><i class="glyphicon glyphicon-edit">&nbsp;</i>Improve this doc</a>
 
 
 
-<a href='http://github.com/angular/angular.js/tree/master/src/ng/directive/ngBind.js#L126' class='view-source pull-right'>
-  <i class="icon-zoom-in">&nbsp;</i>View Source
+<a href='http://github.com/angular/angular.js/tree/master/src/ng/directive/ngBind.js#L126' class='view-source pull-right btn btn-primary'>
+  <i class="glyphicon glyphicon-zoom-in">&nbsp;</i>View Source
 </a>
 
 
@@ -93,49 +93,42 @@ will have an exception (instead of an exploit.)</p>
 
   
   <h2 id="example">Example</h2><p>Try it here: enter text in text box and watch the greeting change.</p>
-<div class="runnable-example" module="ngBindHtmlExample" deps="angular-sanitize.js" id="example-example14" outputFolder="examples/example-example14">
-<div class="runnable-example-file" name="index.html" language="html" type="html">
+<p>   
 
 
+<div class="runnable-example"
+    path="examples/example-example14"
+    module="ngBindHtmlExample"
+    deps="angular-sanitize.js">
 
-<div>
-<pre><code class="lang-html">  &lt;div ng-controller=&quot;ngBindHtmlCtrl&quot;&gt;
-   &lt;p ng-bind-html=&quot;myHTML&quot;&gt;&lt;/p&gt;
-  &lt;/div&gt;</code></pre>
+ 
+  <div class="runnable-example-file" 
+    name="index.html"
+    language="html"
+    type="html">
+    <pre><code>&lt;div ng-controller=&quot;ngBindHtmlCtrl&quot;&gt;&#10; &lt;p ng-bind-html=&quot;myHTML&quot;&gt;&lt;/p&gt;&#10;&lt;/div&gt;</code></pre>  
+  </div>
 
+  <div class="runnable-example-file" 
+    name="script.js"
+    language="js"
+    type="js">
+    <pre><code>angular.module(&#39;ngBindHtmlExample&#39;, [&#39;ngSanitize&#39;])&#10;&#10;.controller(&#39;ngBindHtmlCtrl&#39;, [&#39;$scope&#39;, function ngBindHtmlCtrl($scope) {&#10;  $scope.myHTML =&#10;     &#39;I am an &lt;code&gt;HTML&lt;/code&gt;string with &lt;a href=&quot;#&quot;&gt;links!&lt;/a&gt; and other &lt;em&gt;stuff&lt;/em&gt;&#39;;&#10;}]);</code></pre>  
+  </div>
+
+  <div class="runnable-example-file" 
+    name="protractor.js"
+    type="protractor"
+    language="js">
+    <pre><code>it(&#39;should check ng-bind-html&#39;, function() {&#10;  expect(element(by.binding(&#39;myHTML&#39;)).getText()).toBe(&#10;      &#39;I am an HTMLstring with links! and other stuff&#39;);&#10;});</code></pre>  
+  </div>
+
+
+  <iframe class="runnable-example-frame" src="examples/example-example14/index.html" name="example-example14"></iframe>
 </div>
 
-<p></div></p>
-<div class="runnable-example-file" name="script.js" language="js" type="js">
 
-
-
-<div>
-<pre><code class="lang-js">  angular.module(&#39;ngBindHtmlExample&#39;, [&#39;ngSanitize&#39;])
-
-  .controller(&#39;ngBindHtmlCtrl&#39;, [&#39;$scope&#39;, function ngBindHtmlCtrl($scope) {
-    $scope.myHTML =
-       &#39;I am an &lt;code&gt;HTML&lt;/code&gt;string with &lt;a href=&quot;#&quot;&gt;links!&lt;/a&gt; and other &lt;em&gt;stuff&lt;/em&gt;&#39;;
-  }]);</code></pre>
-
-</div>
-
-<p></div></p>
-<div class="runnable-example-file" name="protractor.js" type="protractor" language="js">
-
-
-
-<div>
-<pre><code class="lang-js">  it(&#39;should check ng-bind-html&#39;, function() {
-    expect(element(by.binding(&#39;myHTML&#39;)).getText()).toBe(
-        &#39;I am an HTMLstring with links! and other stuff&#39;);
-  });</code></pre>
-
-</div>
-
-<p></div></p>
-<p><iframe class="runnable-example-frame" src="examples/example-example14/index.html" name="example-example14"></iframe>
-</div></p>
+</p>
 
 </div>
 
