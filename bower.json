@@ -1,6 +1,6 @@
 {
   "name": "angular",
-  "version": "1.3.x-QUICKSNAP",
+  "version": "1.3.0-QUICKSNAP",
   "main": "./build/angular.js",
   "devDependencies": {
     "jquery": "1.10.2",
